@@ -53,12 +53,12 @@ const projects = [
     summary: 'Research, strategy, and data-driven work focused on better city futures.',
     tag: 'urban strategy, data & policy',
     date: '2025-01-01',
-    href: 'projects.html'
+    href: 'pages/projects.html'
   }
 ];
 
 const blogPosts = [
-  // e.g. { title: 'Post title', summary: 'One-line summary.', readingTime: '5 min read', date: '2026-01-01', href: 'blogs.html' }
+  // e.g. { title: 'Post title', summary: 'One-line summary.', readingTime: '5 min read', date: '2026-01-01', href: 'pages/blogs.html' }
 ];
 
 function getLatest(items) {
