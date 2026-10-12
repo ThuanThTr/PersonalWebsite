@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow:
 
-Sitemap: https://thuantruong.com/sitemap.xml
+Sitemap: https://thuanthtr.github.io/PersonalWebsite/sitemap.xml
