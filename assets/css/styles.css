@@ -41,6 +41,9 @@ body {
   display: flex;
   align-items: center;
   height: 4.4rem;
+  background-color: var(--background-color);
+  border-radius: 999px;
+  padding: 0 0.5rem;
 }
 
 .site-nav ul {
