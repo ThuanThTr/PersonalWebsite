@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const roles = ['a photographer', 'an urban economist', 'an urban innovator', 'a policy analyst', 'a data analyst'];
+  const roles = ['an urban innovator', 'a policy strategist', 'a city systems thinker', 'a data analyst'];
   const roleEl = document.getElementById('role-cycle');
   if (!roleEl) return;
 
@@ -49,9 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // "planned" project) stay as static HTML instead of living in these arrays.
 const projects = [
   {
-    title: 'Project One',
-    summary: 'A placeholder project — swap in your real work here.',
-    tag: 'html, css & js',
+    title: 'Urban Systems Portfolio',
+    summary: 'Research, strategy, and data-driven work focused on better city futures.',
+    tag: 'urban strategy, data & policy',
     date: '2025-01-01',
     href: 'projects.html'
   }
