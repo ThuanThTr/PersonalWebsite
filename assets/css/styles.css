@@ -23,6 +23,7 @@ body {
   font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
   color: var(--primary-color);
   background-color: var(--background-color);
+  padding-top: calc(3vw + 5rem);
 }
 
 @supports (font-variation-settings: normal) {
@@ -30,20 +31,32 @@ body {
 }
 
 
+/* SITE HEADER */
+
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5vw;
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--surface-color);
+  gap: 2rem;
+}
+
 /* SITE NAVIGATION */
 
 
 .site-nav {
-  position: fixed;
-  top: 1.5vw;
-  left: 1.5vw;
-  z-index: 10;
+  position: static;
   display: flex;
   align-items: center;
-  height: 4.4rem;
-  background-color: var(--background-color);
-  border-radius: 999px;
-  padding: 0 0.5rem;
+  height: auto;
 }
 
 .site-nav ul {
@@ -76,10 +89,9 @@ body {
 }
 
 @media (max-width: 768px) {
-  .site-nav {
-    top: 3vw;
-    left: 3vw;
-    height: 3.4rem;
+  .site-header {
+    padding: 3vw;
+    gap: 1rem;
   }
 
   .site-nav ul {
@@ -109,13 +121,10 @@ body {
 
 
 .site-social {
-  position: fixed;
-  top: 1.5vw;
-  right: 1.5vw;
-  z-index: 10;
+  position: static;
   display: flex;
   align-items: center;
-  height: 4.4rem;
+  height: auto;
 }
 
 .site-social ul {
@@ -149,12 +158,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .site-social {
-    top: 3vw;
-    right: 3vw;
-    height: 3.4rem;
-  }
-
   .site-social a {
     width: 3.4rem;
     height: 3.4rem;
@@ -192,7 +195,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 9rem 1.5vw 2vw;
+  padding: 4rem 1.5vw 2vw;
 }
 
 .greeting {
@@ -369,7 +372,7 @@ body {
 
 @media (max-width: 768px) {
   .intro {
-    padding: 10rem 3vw 4vw;
+    padding: 4rem 3vw 4vw;
   }
 
   .greeting {
