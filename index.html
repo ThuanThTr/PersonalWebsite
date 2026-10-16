@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-  <link rel="stylesheet" href="assets/css/styles.css?v=1.3.1">
+  <link rel="stylesheet" href="assets/css/styles.css?v=1.5.1">
 
   <!-- SEO -->
   <title> Thuan Truong</title>
@@ -50,26 +50,9 @@
   </script>
 
 </head>
-<body>
+<body class="home">
 
-  <header class="site-header">
-    <nav class="site-nav">
-      <ul>
-        <li><a href="index.html" aria-current="page">home</a></li>
-        <li><a href="about/">about</a></li>
-        <li><a href="projects/">projects</a></li>
-        <li><a href="blogs/">blogs</a></li>
-      </ul>
-    </nav>
-
-    <div class="site-social">
-      <ul>
-        <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" aria-label="LinkedIn"><img src="assets/icons/linkedin-icon.png" alt=""></a></li>
-        <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="assets/icons/email-icon.png" alt=""></a></li>
-      </ul>
-    </div>
-  </header>
-
+  <main class="home-column">
   <header class="intro">
     <div class="greeting" id="greeting-toggle" role="button" tabindex="0" aria-pressed="false" aria-label="Xin Chào — tap to see the pronunciation guide">
       <div class="greeting-face greeting-front">
@@ -88,6 +71,27 @@
 
     <p class="intro-role">I am <span class="role-cycle" id="role-cycle">an urban innovator</span></p>
     <p class="intro-baseline">Working at the intersection of cities, data, and public strategy.</p>
+  </header>
+
+    <div class="site-social">
+      <ul>
+        <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" aria-label="LinkedIn"><img src="assets/icons/linkedin-icon.png" alt=""></a></li>
+        <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="assets/icons/email-icon.png" alt=""></a></li>
+      </ul>
+    </div>
+
+    <hr class="home-divider">
+
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html" data-panel="home" aria-current="page">home</a></li>
+        <li><a href="about/" data-panel="about">about</a></li>
+        <li><a href="projects/" data-panel="projects">projects</a></li>
+        <li><a href="blogs/" data-panel="writings">writings</a></li>
+      </ul>
+    </nav>
+
+    <section class="home-panel is-active" id="panel-home" aria-label="home">
     <div class="preview-section">
       <p class="preview-section-label">Featured &amp; Recent</p>
       <div class="preview-cards">
@@ -98,16 +102,72 @@
           <span class="preview-card-tag">urban strategy, data &amp; policy</span>
         </a>
         <a class="preview-card" id="featured-blog-card" href="blogs/">
-          <p class="preview-card-label">Latest Blog</p>
+          <p class="preview-card-label">Latest Writing</p>
           <h3 class="preview-card-title">Insights &amp; Reflections</h3>
           <p class="preview-card-summary">Thoughts on cities, public systems, and community-driven change.</p>
           <span class="preview-card-tag">new writing</span>
         </a>
       </div>
     </div>
-  </header>
+    </section>
 
-  <script src="assets/js/scripts.js?v=1.0.1"></script>
+    <section class="home-panel" id="panel-about" aria-label="about" hidden>
+      <p class="home-list-label">bio</p>
+      <div class="home-list">
+        <div class="about-item">
+          <h3>Background</h3>
+          <p>I am an urban innovator based in the Greater Toronto Area. I am interested in how cities can become more inclusive, resilient, and people-centered through thoughtful policy, strong community engagement, and practical data analysis.</p>
+        </div>
+        <div class="about-item">
+          <h3>Education</h3>
+          <p>Master of Urban Innovation from the <a href="https://www.utoronto.ca/" target="_blank" rel="noopener noreferrer" class="location-link">University of Toronto</a>, and a Bachelor of Arts (Honours) in Human Geography from <a href="https://www.mcmaster.ca/" target="_blank" rel="noopener noreferrer" class="location-link">McMaster University</a>.</p>
+        </div>
+        <div class="about-item">
+          <h3>Work</h3>
+          <p>I work at the intersection of urban strategy, public policy, and data to help cities and organizations design better services, stronger systems, and more sustainable futures.</p>
+        </div>
+        <div class="about-item">
+          <h3>Life</h3>
+          <p>I care deeply about community, public life, and the everyday experiences that shape urban change. I enjoy being outdoors, learning from people and places, and thinking about how better design can improve everyday life.</p>
+        </div>
+      </div>
+
+      <p class="home-list-label">skills</p>
+      <div class="home-list">
+        <div class="about-item">
+          <h3>Spatial Analysis</h3>
+          <p>R, Python, and GIS for understanding place-based trends and city systems.</p>
+        </div>
+        <div class="about-item">
+          <h3>Policy Analysis</h3>
+          <p>Jurisdictional scans, policy briefs, risk analysis, and community-informed strategy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-panel" id="panel-projects" aria-label="projects" hidden>
+      <div class="home-list">
+        <div id="project-list"></div>
+        <div class="about-item">
+          <h3>current focus <span class="about-item-note">in progress</span></h3>
+          <p class="languages-tag">urban strategy, research &amp; data <span class="project-date">2026</span></p>
+          <p>Building a sharper body of work on cities, public systems, and community-centered innovation for the Greater Toronto Area and beyond.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-panel" id="panel-writings" aria-label="writings" hidden>
+      <div class="home-list">
+        <div id="blog-list"></div>
+        <div class="about-item" id="blog-empty-placeholder">
+          <h3>writing in progress <span class="about-item-note">new</span></h3>
+          <p>Thoughts on cities, public systems, and the people, data, and policies shaping better urban futures are coming soon.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/scripts.js?v=1.1.0"></script>
 
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

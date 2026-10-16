@@ -654,3 +654,150 @@ body {
     width: 12rem;
   }
 }
+
+
+/* HOMEPAGE: single centered column */
+
+
+.home {
+  padding-top: 0;
+}
+
+.home-column {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: max(6rem, 12vh) 1.6rem 6rem;
+}
+
+.home .intro {
+  min-height: auto;
+  padding: 0;
+}
+
+.home .greeting {
+  margin-top: 0;
+}
+
+.home .greeting-text {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+}
+
+.home .greeting-icon {
+  height: clamp(2.2rem, 5vw, 3.2rem);
+}
+
+.home .intro-name {
+  font-size: clamp(6.4rem, 20vw, 12rem);
+  line-height: 0.9;
+  margin-top: 1.6rem;
+}
+
+.home .intro-role {
+  margin-top: 2.4rem;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.home .site-social {
+  margin-top: 2.4rem;
+}
+
+.home-divider {
+  border: 0;
+  border-top: 1px solid var(--surface-color);
+  margin-top: 2rem;
+}
+
+.home .site-nav {
+  margin-top: 2rem;
+  margin-left: -1rem;
+}
+
+.home .site-nav ul {
+  flex-wrap: wrap;
+}
+
+.home .preview-section {
+  margin-top: 3.2rem;
+  align-self: auto;
+  padding-top: 0;
+}
+
+.home .preview-card {
+  flex: 1;
+  width: auto;
+}
+
+.home-panel {
+  margin-top: 3.2rem;
+}
+
+.home-panel.is-active {
+  animation: home-panel-in 0.35s ease-out;
+}
+
+@keyframes home-panel-in {
+  from { opacity: 0; transform: translateY(0.8rem); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-panel.is-active {
+    animation: none;
+  }
+}
+
+.home .preview-section {
+  margin-top: 0;
+}
+
+.home-list-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--subtle);
+  margin-bottom: 0.4rem;
+}
+
+.home-list + .home-list-label {
+  margin-top: 3.2rem;
+}
+
+.home-list .about-item {
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--surface-color);
+  margin-bottom: 0;
+}
+
+.home-list .about-item h3 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.home-list .about-item p,
+.home-list .about-item-note {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--secondary-color);
+}
+
+.home-list .about-link-big {
+  display: block;
+}
+
+.home-list .languages-tag {
+  font-size: 1.3rem;
+  padding: 0 0 0.4rem;
+}
+
+@media (max-width: 600px) {
+  .home-column {
+    padding-top: 3rem;
+  }
+
+  .home .preview-cards {
+    flex-direction: column;
+  }
+}

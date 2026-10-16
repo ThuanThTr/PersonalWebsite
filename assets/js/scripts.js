@@ -119,3 +119,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (blogEmptyPlaceholder) blogEmptyPlaceholder.remove();
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.home .site-nav a[data-panel]');
+  if (!tabs.length) return;
+
+  const show = (name) => {
+    const panel = document.getElementById(`panel-${name}`);
+    if (!panel) return false;
+
+    document.querySelectorAll('.home-panel').forEach((p) => {
+      const active = p === panel;
+      p.hidden = !active;
+      p.classList.toggle('is-active', active);
+    });
+    tabs.forEach((t) => {
+      if (t.dataset.panel === name) t.setAttribute('aria-current', 'page');
+      else t.removeAttribute('aria-current');
+    });
+    return true;
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey) return;
+      event.preventDefault();
+      const name = tab.dataset.panel;
+      show(name);
+      history.replaceState(null, '', name === 'home' ? location.pathname : `#${name}`);
+    });
+  });
+
+  show(location.hash.slice(1)) || show('home');
+});
