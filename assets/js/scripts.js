@@ -49,6 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // "planned" project) stay as static HTML instead of living in these arrays.
 const projects = [
   {
+    title: 'World Airports',
+    summary: 'An interactive map of every airport in the OpenFlights database, built with MapLibre and Supercluster.',
+    tag: 'maplibre, spatial data',
+    date: '2026-10-16',
+    href: 'projects/airports/'
+  },
+  {
     title: 'Urban Systems Portfolio',
     summary: 'Research, strategy, and data-driven work focused on better city futures.',
     tag: 'urban strategy, data & policy',
@@ -60,6 +67,11 @@ const projects = [
 const blogPosts = [
   // e.g. { title: 'Post title', summary: 'One-line summary.', readingTime: '5 min read', date: '2026-01-01', href: 'blogs/' }
 ];
+
+// Hrefs above are relative to the site root; resolve them from this script's
+// location so they work from any page depth (e.g. /projects/).
+const siteRoot = new URL('../../', document.currentScript.src);
+const resolveHref = (href) => new URL(href, siteRoot).href;
 
 function getLatest(items) {
   if (!items.length) return null;
@@ -74,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const projectCard = document.getElementById('featured-project-card');
   const latestProject = getLatest(projects);
   if (projectCard && latestProject) {
-    projectCard.href = latestProject.href;
+    projectCard.href = resolveHref(latestProject.href);
     projectCard.querySelector('.preview-card-title').textContent = latestProject.title;
     projectCard.querySelector('.preview-card-summary').textContent = latestProject.summary;
     projectCard.querySelector('.preview-card-tag').textContent = latestProject.tag;
@@ -83,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const blogCard = document.getElementById('featured-blog-card');
   const latestBlog = getLatest(blogPosts);
   if (blogCard && latestBlog) {
-    blogCard.href = latestBlog.href;
+    blogCard.href = resolveHref(latestBlog.href);
     blogCard.querySelector('.preview-card-title').textContent = latestBlog.title;
     blogCard.querySelector('.preview-card-summary').textContent = latestBlog.summary;
     blogCard.querySelector('.preview-card-tag').textContent = latestBlog.readingTime;
@@ -95,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (projectList) {
     projectList.innerHTML = sortNewestFirst(projects).map((p) => `
       <div class="about-item">
-        <a href="${p.href}" class="about-link-big">
+        <a href="${resolveHref(p.href)}" class="about-link-big">
           <h3>${p.title}</h3>
           <p class="languages-tag">${p.tag} <span class="project-date">${p.date}</span></p>
           <p>${p.summary}</p>
@@ -109,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (blogList && blogPosts.length) {
     blogList.innerHTML = sortNewestFirst(blogPosts).map((b) => `
       <div class="about-item">
-        <a href="${b.href}" class="about-link-big">
+        <a href="${resolveHref(b.href)}" class="about-link-big">
           <h3>${b.title}</h3>
           <p class="languages-tag">${b.readingTime} <span class="project-date">${b.date}</span></p>
           <p>${b.summary}</p>
