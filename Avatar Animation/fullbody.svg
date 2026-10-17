@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <!-- Off-white background -->
+  <rect width="400" height="600" fill="#F4EFE6"/>
+
+  <!-- Arms (slim sleeves hanging at sides) -->
+  <path d="M134 230 Q126 236 124 250 L120 296 Q126 302 136 300 L146 250 Z" fill="#2F3E55" stroke="#1E2838" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M266 230 Q274 236 276 250 L280 296 Q274 302 264 300 L254 250 Z" fill="#2F3E55" stroke="#1E2838" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M120 298 L116 332 Q114 344 122 346 Q130 346 132 338 L136 300 Z" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M280 298 L284 332 Q286 344 278 346 Q270 346 268 338 L264 300 Z" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Hands -->
+  <path d="M118 340 Q110 352 116 364 Q122 372 134 366 Q142 358 138 342 Q134 334 124 334 Z" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M120 346 Q128 350 132 356" fill="none" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+  <path d="M282 340 Q290 352 284 364 Q278 372 266 366 Q258 358 262 342 Q266 334 276 334 Z" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M280 346 Q272 350 268 356" fill="none" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Neck -->
+  <rect x="184" y="186" width="32" height="30" fill="#E9CBAE"/>
+
+  <!-- Fitted crew-neck tee -->
+  <path d="M128 232 Q128 216 150 212 L170 206 Q200 224 230 206 L250 212 Q272 216 272 232 L268 340 L252 382 L148 382 L132 340 Z"
+        fill="#2F3E55" stroke="#1E2838" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M170 206 Q200 224 230 206" fill="none" stroke="#1E2838" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Chinos (khaki, slim straight leg) -->
+  <path d="M150 376 L250 376 L250 386 L238 560 L204 560 L200 420 L196 560 L162 560 L150 386 Z"
+        fill="#B9A88A" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="200" y1="420" x2="200" y2="470" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Sneakers (white, minimal) -->
+  <!-- White low-top sneakers -->
+  <path d="M154 562 L154 552 Q154 546 162 546 L184 546 Q194 548 196 556 L196 562 Z" fill="#F7F7F5" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="151" y="562" width="48" height="8" rx="4" fill="#EDEDED" stroke="#4A3728" stroke-width="2.5"/>
+  <line x1="162" y1="552" x2="176" y2="552" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+  <path d="M246 562 L246 552 Q246 546 238 546 L216 546 Q206 548 204 556 L204 562 Z" fill="#F7F7F5" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="203" y="562" width="48" height="8" rx="4" fill="#EDEDED" stroke="#4A3728" stroke-width="2.5"/>
+  <line x1="224" y1="552" x2="238" y2="552" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Ears -->
+  <circle cx="140" cy="140" r="11" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+  <circle cx="260" cy="140" r="11" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+
+  <!-- Head -->
+  <ellipse cx="200" cy="130" rx="62" ry="64" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+
+  <!-- Short boyish hair with light fringe -->
+  <path d="M140 124 Q135 62 172 60 Q200 55 228 60 Q265 62 260 124 Q256 100 244 92 Q224 82 200 84 Q176 82 156 92 Q144 100 140 124 Z"
+        fill="#2A211B" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M164 92 Q186 78 214 86" fill="none" stroke="#2A211B" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Blush -->
+  <circle cx="158" cy="170" r="7" fill="#E8B4A0" opacity="0.6"/>
+  <circle cx="242" cy="170" r="7" fill="#E8B4A0" opacity="0.6"/>
+
+  <!-- Slim round glasses -->
+  <circle cx="177" cy="138" r="20" fill="none" stroke="#4A3728" stroke-width="3"/>
+  <circle cx="223" cy="138" r="20" fill="none" stroke="#4A3728" stroke-width="3"/>
+  <line x1="197" y1="138" x2="203" y2="138" stroke="#4A3728" stroke-width="3"/>
+  <line x1="157" y1="134" x2="148" y2="130" stroke="#4A3728" stroke-width="3" stroke-linecap="round"/>
+  <line x1="243" y1="134" x2="252" y2="130" stroke="#4A3728" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Eyes -->
+  <circle cx="177" cy="141" r="3.5" fill="#4A3728"/>
+  <circle cx="223" cy="141" r="3.5" fill="#4A3728"/>
+
+  <!-- Smile -->
+  <path d="M188 166 Q200 176 212 166" fill="none" stroke="#4A3728" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

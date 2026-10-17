@@ -1,0 +1,66 @@
+/* HOME INTRO: the builder drops in, draws "Thuận." with a pencil, then the page appears.
+   Runs only while <html> has .intro-play (set once per session by the inline script in index.html).
+   The drawing and the cursor-following eyes are driven by builder.js. */
+
+
+/* 1. Drop in (0 – 0.8s) */
+
+.intro-play .builder {
+  transform-origin: 50% 100%;
+  animation: builder-drop 0.8s both;
+}
+
+@keyframes builder-drop {
+  0% { transform: translateY(-110vh); animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.4); }
+  70% { transform: translateY(0) scale(1, 1); animation-timing-function: ease-out; }
+  82% { transform: translateY(0) scale(1.06, 0.9); }
+  100% { transform: translateY(0) scale(1, 1); }
+}
+
+
+/* 2. Draw the name (0.85 – 3.4s): builder.js walks him along the word and
+   uncovers each letter behind the pencil tip. */
+
+.intro-play .intro-name > span {
+  display: inline-block;
+  opacity: 0;
+  /* Fallback if builder.js never runs: letters simply appear with the page. */
+  animation: intro-reveal 0.6s ease 3.35s both;
+}
+
+.intro-drawing .intro-name > span {
+  animation: none;
+}
+
+@keyframes intro-reveal {
+  to { opacity: 1; }
+}
+
+
+/* 3. Everything else appears (3.35 – 4.1s) */
+
+.intro-play .greeting-caption,
+.intro-play .greeting-icon,
+.intro-play .greeting-lead,
+.intro-play .intro-role,
+.intro-play .site-social {
+  opacity: 0;
+  animation: intro-appear 0.6s ease 3.35s both;
+}
+
+.intro-play .home-divider,
+.intro-play .site-nav,
+.intro-play .home-panel {
+  opacity: 0;
+  animation: intro-appear 0.6s ease 3.5s both;
+}
+
+@keyframes intro-appear {
+  from { opacity: 0; transform: translateY(0.8rem); }
+  to { opacity: 1; transform: none; }
+}
+
+/* The greeting icon keeps its wave once it has appeared */
+.intro-play .greeting-icon {
+  animation: intro-appear 0.6s ease 3.35s both, wave 2.5s 3.95s infinite;
+}

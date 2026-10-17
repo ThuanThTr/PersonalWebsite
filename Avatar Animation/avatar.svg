@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Off-white background -->
+  <rect width="400" height="400" fill="#F4EFE6"/>
+
+  <!-- Neck -->
+  <rect x="182" y="240" width="36" height="56" fill="#E9CBAE"/>
+
+  <!-- T-shirt (muted sage, crew neckline, thin brown outline) -->
+  <path d="M96 400 L96 332 Q96 302 128 294 L170 284 Q200 310 230 284 L272 294 Q304 302 304 332 L304 400 Z"
+        fill="#8B6A4F" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Neckline trim -->
+  <path d="M170 284 Q200 310 230 284" fill="none" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Ears -->
+  <circle cx="130" cy="196" r="12" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+  <circle cx="270" cy="196" r="12" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+
+  <!-- Head (oversized, chibi proportion) -->
+  <ellipse cx="200" cy="185" rx="70" ry="72" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+
+  <!-- Simplified hair blocks -->
+  <path d="M130 182 Q126 116 170 113 L232 111 Q274 116 270 182 L262 160 L252 170 L244 146 L200 132 L156 146 L148 170 L138 160 Z"
+        fill="#3A2E26" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Blush -->
+  <circle cx="152" cy="226" r="8" fill="#E8B4A0" opacity="0.6"/>
+  <circle cx="248" cy="226" r="8" fill="#E8B4A0" opacity="0.6"/>
+
+  <!-- Oversized round glasses -->
+  <circle cx="172" cy="194" r="24" fill="none" stroke="#4A3728" stroke-width="3.5"/>
+  <circle cx="228" cy="194" r="24" fill="none" stroke="#4A3728" stroke-width="3.5"/>
+  <line x1="196" y1="194" x2="204" y2="194" stroke="#4A3728" stroke-width="3"/>
+  <line x1="148" y1="190" x2="138" y2="186" stroke="#4A3728" stroke-width="3" stroke-linecap="round"/>
+  <line x1="252" y1="190" x2="262" y2="186" stroke="#4A3728" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Dotted eyes -->
+  <circle cx="172" cy="197" r="4" fill="#4A3728"/>
+  <circle cx="228" cy="197" r="4" fill="#4A3728"/>
+
+  <!-- Simple smile -->
+  <path d="M186 230 Q200 242 214 230" fill="none" stroke="#4A3728" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

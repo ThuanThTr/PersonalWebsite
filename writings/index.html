@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-  <link rel="stylesheet" href="../assets/css/styles.css?v=1.3.1">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=1.10.0">
 
   <!-- SEO -->
   <title>Writings - Thuan Truong</title>
@@ -15,7 +15,7 @@
 
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://thuanthtr.github.io/PersonalWebsite/blogs/" />
+  <link rel="canonical" href="https://thuanthtr.github.io/PersonalWebsite/writings/" />
 
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -33,7 +33,6 @@
     <nav class="site-nav">
       <ul>
         <li><a href="../index.html" class="nav-home" aria-label="thuận"><span aria-hidden="true">t</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></a></li>
-        <li><a href="../about/">about</a></li>
         <li><a href="../projects/">projects</a></li>
         <li><a href="index.html" aria-current="page">writings</a></li>
       </ul>
@@ -47,37 +46,26 @@
     </div>
   </header>
 
-  <main>
+  <main class="page">
 
-    <!-- WRITINGS SECTION -->
+    <header class="page-header">
+      <h1>writings</h1>
+      <p>Essays and spatial notes on cities, data, and policy.</p>
+    </header>
 
-    <section class="about-section" aria-label="writings section">
-      <div class="about">
-        <h2>writings</h2>
-        <div class="about-list">
+    <!-- POSTS: rendered from blogPosts in assets/js/scripts.js -->
 
-          <div id="blog-list"></div>
-
-          <div class="about-item" id="blog-empty-placeholder">
-            <h3>writing in progress <span class="about-item-note">new</span></h3>
-            <p>Thoughts on cities, public systems, and the people, data, and policies shaping better urban futures are coming soon.</p>
-          </div>
-
-        </div>
-      </div>
+    <section class="page-section" aria-labelledby="posts-heading">
+      <h2 class="section-label" id="posts-heading">All writing</h2>
+      <ol class="entry-feed" id="blog-list">
+        <li class="feed-empty" id="blog-empty-placeholder">No published writing yet. Essays on spatial data, urban strategy, and policy are coming soon.</li>
+      </ol>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
 
-  <footer>
-    <div class="footer">
-      <img src="../assets/icons/moving-cat.gif" alt="a small looping cat animation" class="footer-gif">
-    </div>
-  </footer>
-
-  <script src="../assets/js/scripts.js?v=1.0.1"></script>
+  <script src="../assets/js/scripts.js?v=1.6.3"></script>
 
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

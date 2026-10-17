@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tim Avatar</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #F4EFE6;
+    }
+
+    .avatar {
+      width: min(320px, 80vw);
+      height: auto;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    /* Outlines draw themselves in, then the fill fades in underneath */
+    .avatar .draw {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      fill-opacity: 0;
+      animation:
+        draw 0.9s ease-in-out var(--d, 0s) forwards,
+        fill 0.6s ease var(--f, 0.6s) forwards;
+    }
+
+    /* Shapes with no outline just fade in */
+    .avatar .fade {
+      opacity: 0;
+      animation: fade 0.5s ease var(--d, 0s) forwards;
+    }
+
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes fill { to { fill-opacity: 1; } }
+    @keyframes fade { to { opacity: 1; } }
+
+    /* Blush keeps its soft 0.6 opacity */
+    .avatar .blush.fade { animation-name: fade-blush; }
+    @keyframes fade-blush { to { opacity: 0.6; } }
+
+    #glasses { cursor: grab; touch-action: none; }
+    #glasses.dragging { cursor: grabbing; }
+    #glasses.returning { transition: transform 0.4s ease; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .avatar .draw, .avatar .fade { animation-duration: 0.01s; animation-delay: 0s; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Click the avatar to replay the animation -->
+  <svg class="avatar" id="tim-avatar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Illustrated avatar of Tim">
+    <rect width="400" height="400" fill="#F4EFE6"/>
+
+    <!-- Neck -->
+    <rect class="fade" style="--d:1.6s" x="182" y="240" width="36" height="56" fill="#E9CBAE"/>
+
+    <!-- T-shirt -->
+    <path class="draw" style="--d:0s; --f:0.9s" pathLength="1"
+          d="M96 400 L96 332 Q96 302 128 294 L170 284 Q200 310 230 284 L272 294 Q304 302 304 332 L304 400 Z"
+          fill="#8B6A4F" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+    <path class="draw" style="--d:0.5s" pathLength="1"
+          d="M170 284 Q200 310 230 284" fill="none" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Ears -->
+    <circle class="draw" style="--d:0.7s; --f:1.6s" pathLength="1" cx="130" cy="196" r="12" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+    <circle class="draw" style="--d:0.7s; --f:1.6s" pathLength="1" cx="270" cy="196" r="12" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+
+    <!-- Head -->
+    <ellipse class="draw" style="--d:0.8s; --f:1.6s" pathLength="1" cx="200" cy="185" rx="70" ry="72" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+
+    <!-- Hair -->
+    <path class="draw" style="--d:1.4s; --f:2.2s" pathLength="1"
+          d="M130 182 Q126 116 170 113 L232 111 Q274 116 270 182 L262 160 L252 170 L244 146 L200 132 L156 146 L148 170 L138 160 Z"
+          fill="#3A2E26" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Blush -->
+    <circle class="fade blush" style="--d:3.4s" cx="152" cy="226" r="8" fill="#E8B4A0"/>
+    <circle class="fade blush" style="--d:3.4s" cx="248" cy="226" r="8" fill="#E8B4A0"/>
+
+    <!-- Glasses (draggable; double-click to put them back) -->
+    <g id="glasses">
+    <!-- Invisible hit area so the glasses are easy to grab -->
+    <rect x="134" y="168" width="132" height="52" fill="transparent"/>
+    <circle class="draw" style="--d:2.2s" pathLength="1" cx="172" cy="194" r="24" fill="none" stroke="#4A3728" stroke-width="3.5"/>
+    <circle class="draw" style="--d:2.4s" pathLength="1" cx="228" cy="194" r="24" fill="none" stroke="#4A3728" stroke-width="3.5"/>
+    <line class="draw" style="--d:2.6s" pathLength="1" x1="196" y1="194" x2="204" y2="194" stroke="#4A3728" stroke-width="3"/>
+    <line class="draw" style="--d:2.6s" pathLength="1" x1="148" y1="190" x2="138" y2="186" stroke="#4A3728" stroke-width="3" stroke-linecap="round"/>
+    <line class="draw" style="--d:2.6s" pathLength="1" x1="252" y1="190" x2="262" y2="186" stroke="#4A3728" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Eyes -->
+    <circle class="fade" style="--d:2.9s" cx="172" cy="197" r="4" fill="#4A3728"/>
+    <circle class="fade" style="--d:2.9s" cx="228" cy="197" r="4" fill="#4A3728"/>
+
+    <!-- Smile -->
+    <path class="draw" style="--d:3.1s" pathLength="1"
+          d="M186 230 Q200 242 214 230" fill="none" stroke="#4A3728" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+
+  <script>
+    const avatar = document.getElementById('tim-avatar');
+    const glasses = document.getElementById('glasses');
+
+    // Drag the glasses around (mouse and touch)
+    let offset = { x: 0, y: 0 };
+    let start = null;
+
+    function toSvgPoint(e) {
+      const p = new DOMPoint(e.clientX, e.clientY);
+      return p.matrixTransform(avatar.getScreenCTM().inverse());
+    }
+
+    function moveGlasses(x, y) {
+      offset = { x, y };
+      glasses.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    glasses.addEventListener('pointerdown', e => {
+      const p = toSvgPoint(e);
+      start = { x: p.x - offset.x, y: p.y - offset.y };
+      glasses.classList.remove('returning');
+      glasses.classList.add('dragging');
+      glasses.setPointerCapture(e.pointerId);
+    });
+
+    glasses.addEventListener('pointermove', e => {
+      if (!start) return;
+      const p = toSvgPoint(e);
+      // Keep the glasses inside the 400x400 picture
+      const x = Math.max(-134, Math.min(134, p.x - start.x));
+      const y = Math.max(-168, Math.min(180, p.y - start.y));
+      moveGlasses(x, y);
+    });
+
+    const endDrag = () => {
+      start = null;
+      glasses.classList.remove('dragging');
+    };
+    glasses.addEventListener('pointerup', endDrag);
+    glasses.addEventListener('pointercancel', endDrag);
+
+    // Double-click puts the glasses back on
+    glasses.addEventListener('dblclick', () => {
+      glasses.classList.add('returning');
+      moveGlasses(0, 0);
+    });
+
+    // Replay the drawing when clicking anywhere except the glasses
+    avatar.addEventListener('click', e => {
+      if (glasses.contains(e.target)) return;
+      glasses.classList.add('returning');
+      moveGlasses(0, 0);
+      avatar.querySelectorAll('.draw, .fade').forEach(el => {
+        el.style.animation = 'none';
+        el.getBoundingClientRect(); // force reflow
+        el.style.animation = '';
+      });
+    });
+  </script>
+</body>
+</html>

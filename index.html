@@ -6,11 +6,21 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-  <link rel="stylesheet" href="assets/css/styles.css?v=1.5.1">
+  <link rel="stylesheet" href="assets/css/styles.css?v=1.10.0">
+  <link rel="stylesheet" href="Avatar%20Animation/builder.css?v=1.2.0">
+  <script>
+    // Play the intro once per browser session, and never for reduced-motion visitors.
+    try {
+      if (!sessionStorage.getItem('introPlayed') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('intro-play');
+        sessionStorage.setItem('introPlayed', '1');
+      }
+    } catch (e) {}
+  </script>
 
   <!-- SEO -->
-  <title> Thuan Truong</title>
-  <meta name="description" content="I'm Thuan Truong, an urban innovator based in Greater Toronto Area.">
+  <title>Thuan Truong</title>
+  <meta name="description" content="I'm Thuan Truong, an urban innovator based in the Greater Toronto Area.">
   <meta name="keywords" content="Thuan Truong, urban innovation, university of toronto, Thuan Truong, Tim Truong">
  
   <!-- Favicons -->
@@ -59,18 +69,71 @@
         <p class="greeting-caption">tap for pronunciation</p>
         <div class="greeting-row">
           <img src="assets/icons/hello.png" alt="" class="greeting-icon">
-          <p class="greeting-text"><span class="greeting-hint">Xin Chào</span>, welcome to<br><span class="intro-name text-italic-hover-effect" aria-label="Thuận"><span aria-hidden="true">T</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></span></p>
+          <p class="greeting-text"><span class="greeting-lead"><span class="greeting-hint">Xin Chào</span>, welcome to</span><br>
+            <span class="intro-build">
+              <span class="intro-name text-italic-hover-effect" aria-label="Thuận"><span aria-hidden="true">T</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></span>
+              <svg class="builder" viewBox="100 50 200 525" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                <!-- Source: Avatar Animation/fullbody.svg (background removed). Animated by Avatar Animation/builder.js. -->
+                <g class="builder-arm">
+                  <path d="M134 230 Q126 236 124 250 L120 296 Q126 302 136 300 L146 250 Z" fill="#2F3E55" stroke="#1E2838" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M120 298 L116 332 Q114 344 122 346 Q130 346 132 338 L136 300 Z" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+                  <g class="builder-pencil" opacity="0">
+                    <rect x="122" y="336" width="10" height="64" fill="#F2C14E" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+                    <path d="M122 400 L132 400 L127 414 Z" fill="#F1D9B5" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+                    <path d="M125 408.4 L129 408.4 L127 414 Z" fill="#4A3728"/>
+                  </g>
+                  <path d="M118 340 Q110 352 116 364 Q122 372 134 366 Q142 358 138 342 Q134 334 124 334 Z" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M120 346 Q128 350 132 356" fill="none" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+                </g>
+                <path d="M266 230 Q274 236 276 250 L280 296 Q274 302 264 300 L254 250 Z" fill="#2F3E55" stroke="#1E2838" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M280 298 L284 332 Q286 344 278 346 Q270 346 268 338 L264 300 Z" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M282 340 Q290 352 284 364 Q278 372 266 366 Q258 358 262 342 Q266 334 276 334 Z" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M280 346 Q272 350 268 356" fill="none" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+                <rect x="184" y="186" width="32" height="30" fill="#E9CBAE"/>
+                <path d="M128 232 Q128 216 150 212 L170 206 Q200 224 230 206 L250 212 Q272 216 272 232 L268 340 L252 382 L148 382 L132 340 Z" fill="#2F3E55" stroke="#1E2838" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M170 206 Q200 224 230 206" fill="none" stroke="#1E2838" stroke-width="2" stroke-linecap="round"/>
+                <path d="M150 376 L250 376 L250 386 L238 560 L204 560 L200 420 L196 560 L162 560 L150 386 Z" fill="#B9A88A" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+                <line x1="200" y1="420" x2="200" y2="470" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+                <path d="M154 562 L154 552 Q154 546 162 546 L184 546 Q194 548 196 556 L196 562 Z" fill="#F7F7F5" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+                <rect x="151" y="562" width="48" height="8" rx="4" fill="#EDEDED" stroke="#4A3728" stroke-width="2.5"/>
+                <line x1="162" y1="552" x2="176" y2="552" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+                <path d="M246 562 L246 552 Q246 546 238 546 L216 546 Q206 548 204 556 L204 562 Z" fill="#F7F7F5" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+                <rect x="203" y="562" width="48" height="8" rx="4" fill="#EDEDED" stroke="#4A3728" stroke-width="2.5"/>
+                <line x1="224" y1="552" x2="238" y2="552" stroke="#4A3728" stroke-width="2" stroke-linecap="round"/>
+                <g class="builder-head">
+                  <circle cx="140" cy="140" r="11" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+                  <circle cx="260" cy="140" r="11" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+                  <ellipse cx="200" cy="130" rx="62" ry="64" fill="#E9CBAE" stroke="#4A3728" stroke-width="2.5"/>
+                  <path d="M140 124 Q135 62 172 60 Q200 55 228 60 Q265 62 260 124 Q256 100 244 92 Q224 82 200 84 Q176 82 156 92 Q144 100 140 124 Z" fill="#2A211B" stroke="#4A3728" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M164 92 Q186 78 214 86" fill="none" stroke="#2A211B" stroke-width="3" stroke-linecap="round"/>
+                  <g class="builder-face">
+                    <circle cx="158" cy="170" r="7" fill="#E8B4A0" opacity="0.6"/>
+                    <circle cx="242" cy="170" r="7" fill="#E8B4A0" opacity="0.6"/>
+                    <circle cx="177" cy="138" r="20" fill="none" stroke="#4A3728" stroke-width="3"/>
+                    <circle cx="223" cy="138" r="20" fill="none" stroke="#4A3728" stroke-width="3"/>
+                    <line x1="197" y1="138" x2="203" y2="138" stroke="#4A3728" stroke-width="3"/>
+                    <line x1="157" y1="134" x2="148" y2="130" stroke="#4A3728" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="243" y1="134" x2="252" y2="130" stroke="#4A3728" stroke-width="3" stroke-linecap="round"/>
+                    <g class="builder-eyes">
+                      <circle cx="177" cy="141" r="3.5" fill="#4A3728"/>
+                      <circle cx="223" cy="141" r="3.5" fill="#4A3728"/>
+                    </g>
+                    <path d="M188 166 Q200 176 212 166" fill="none" stroke="#4A3728" stroke-width="2.5" stroke-linecap="round"/>
+                  </g>
+                </g>
+              </svg>
+            </span>
+          </p>
         </div>
       </div>
       <div class="greeting-face greeting-back">
         <p>"Xin chào" means "Hello" and is pronounced like "seen chow" with careful attention to tones.</p>
-        <p><strong>Xin:</strong> Pronounced like "seen" with a soft 's' sound, using mid-level tone without rising or falling inflection.</p>
-        <p><strong>Chào:</strong> Pronounced like "chow" but with a falling tone, starting high and dropping down. The tone is crucial as it distinguishes this greeting from other words with similar sounds.</p>
+        <p><strong>Xin:</strong> Pronounced like "seen" with a soft 's' sound, using a mid-level tone without rising or falling inflection.</p>
+        <p><strong>Chào:</strong> Pronounced like "chow" but with a falling tone, starting high and dropping down. The tone is crucial, as it distinguishes this greeting from other words with similar sounds.</p>
       </div>
     </div>
 
     <p class="intro-role">I am <span class="role-cycle" id="role-cycle">an urban innovator</span></p>
-    <p class="intro-baseline">Working at the intersection of cities, data, and public strategy.</p>
   </header>
 
     <div class="site-social">
@@ -84,90 +147,66 @@
 
     <nav class="site-nav">
       <ul>
-        <li><a href="index.html" data-panel="home" aria-current="page">home</a></li>
-        <li><a href="about/" data-panel="about">about</a></li>
+        <li hidden><a href="index.html" data-panel="home" aria-current="page">home</a></li>
         <li><a href="projects/" data-panel="projects">projects</a></li>
-        <li><a href="blogs/" data-panel="writings">writings</a></li>
+        <li><a href="writings/" data-panel="writings">writings</a></li>
       </ul>
     </nav>
 
     <section class="home-panel is-active" id="panel-home" aria-label="home">
-    <div class="preview-section">
-      <p class="preview-section-label">Featured &amp; Recent</p>
-      <div class="preview-cards">
-        <a class="preview-card" id="featured-project-card" href="projects/">
-          <p class="preview-card-label">Featured Project</p>
-          <h3 class="preview-card-title">Urban Systems Portfolio</h3>
-          <p class="preview-card-summary">Research, strategy, and data-driven work focused on better city futures.</p>
-          <span class="preview-card-tag">urban strategy, data &amp; policy</span>
-        </a>
-        <a class="preview-card" id="featured-blog-card" href="blogs/">
-          <p class="preview-card-label">Latest Writing</p>
-          <h3 class="preview-card-title">Insights &amp; Reflections</h3>
-          <p class="preview-card-summary">Thoughts on cities, public systems, and community-driven change.</p>
-          <span class="preview-card-tag">new writing</span>
-        </a>
-      </div>
-    </div>
-    </section>
-
-    <section class="home-panel" id="panel-about" aria-label="about" hidden>
-      <p class="home-list-label">bio</p>
-      <div class="home-list">
-        <div class="about-item">
-          <h3>Background</h3>
-          <p>I am an urban innovator based in the Greater Toronto Area. I am interested in how cities can become more inclusive, resilient, and people-centered through thoughtful policy, strong community engagement, and practical data analysis.</p>
-        </div>
-        <div class="about-item">
-          <h3>Education</h3>
-          <p>Master of Urban Innovation from the <a href="https://www.utoronto.ca/" target="_blank" rel="noopener noreferrer" class="location-link">University of Toronto</a>, and a Bachelor of Arts (Honours) in Human Geography from <a href="https://www.mcmaster.ca/" target="_blank" rel="noopener noreferrer" class="location-link">McMaster University</a>.</p>
-        </div>
-        <div class="about-item">
-          <h3>Work</h3>
-          <p>I work at the intersection of urban strategy, public policy, and data to help cities and organizations design better services, stronger systems, and more sustainable futures.</p>
-        </div>
-        <div class="about-item">
-          <h3>Life</h3>
-          <p>I care deeply about community, public life, and the everyday experiences that shape urban change. I enjoy being outdoors, learning from people and places, and thinking about how better design can improve everyday life.</p>
-        </div>
+      <div class="home-intro">
+        <p>I am an urban innovator based in the Greater Toronto Area, working at the intersection of cities, data, and innovation.</p>
+        <p>I am early in my career and always eager to learn and improve my skills and knowledge every day.</p>
+        <p>During the week, I am a research and data analyst at MunicipalVU. On the weekends, I focus on staying active and enjoying the outdoors.</p>
       </div>
 
-      <p class="home-list-label">skills</p>
-      <div class="home-list">
-        <div class="about-item">
-          <h3>Spatial Analysis</h3>
-          <p>R, Python, and GIS for understanding place-based trends and city systems.</p>
+      <dl class="home-facts">
+        <div class="fact">
+          <dt>education</dt>
+          <dd>
+            <p>Master of Urban Innovation, <a href="https://www.utoronto.ca/" target="_blank" rel="noopener noreferrer" class="location-link">University of Toronto</a></p>
+            <p>BA (Honours) Human Geography, <a href="https://www.mcmaster.ca/" target="_blank" rel="noopener noreferrer" class="location-link">McMaster University</a></p>
+          </dd>
         </div>
-        <div class="about-item">
-          <h3>Policy Analysis</h3>
-          <p>Jurisdictional scans, policy briefs, risk analysis, and community-informed strategy.</p>
+        <div class="fact">
+          <dt>spatial &amp; data</dt>
+          <dd>Python, GeoPandas, OSMnx, r5py, R, ArcGIS, QGIS, spatial analytics, GTFS data, census analytics</dd>
         </div>
+        <div class="fact">
+          <dt>policy &amp; strategy</dt>
+          <dd>Urban strategy, policy analysis, jurisdictional scans, risk analysis, infrastructure strategy, public policy</dd>
+        </div>
+      </dl>
+
+      <div class="teaser-grid">
+        <a class="teaser" id="featured-project-card" href="projects/airports/">
+          <p class="teaser-label">latest project</p>
+          <p class="teaser-title">World Airports</p>
+          <p class="teaser-text">An interactive map of every airport in the OpenFlights database, built with MapLibre and Supercluster.</p>
+        </a>
+        <a class="teaser" id="featured-blog-card" href="#writings" data-panel="writings">
+          <p class="teaser-label">writing</p>
+          <p class="teaser-title">Writings &amp; Spatial Notes</p>
+          <p class="teaser-text">Essays on spatial data, urban strategy, and policy are coming soon.</p>
+        </a>
       </div>
     </section>
 
     <section class="home-panel" id="panel-projects" aria-label="projects" hidden>
-      <div class="home-list">
-        <div id="project-list"></div>
-        <div class="about-item">
-          <h3>current focus <span class="about-item-note">in progress</span></h3>
-          <p class="languages-tag">urban strategy, research &amp; data <span class="project-date">2026</span></p>
-          <p>Building a sharper body of work on cities, public systems, and community-centered innovation for the Greater Toronto Area and beyond.</p>
-        </div>
-      </div>
+      <!-- Rendered from the projects array in assets/js/scripts.js -->
+      <ol class="entry-feed" id="project-list"></ol>
     </section>
 
     <section class="home-panel" id="panel-writings" aria-label="writings" hidden>
-      <div class="home-list">
-        <div id="blog-list"></div>
-        <div class="about-item" id="blog-empty-placeholder">
-          <h3>writing in progress <span class="about-item-note">new</span></h3>
-          <p>Thoughts on cities, public systems, and the people, data, and policies shaping better urban futures are coming soon.</p>
-        </div>
-      </div>
+      <!-- Rendered from the blogPosts array in assets/js/scripts.js -->
+      <ol class="entry-feed" id="blog-list">
+        <li class="feed-empty" id="blog-empty-placeholder">No published writing yet. Essays on spatial data, urban strategy, and policy are coming soon.</li>
+      </ol>
     </section>
   </main>
 
-  <script src="assets/js/scripts.js?v=1.1.0"></script>
+  <script src="assets/js/scripts.js?v=1.6.3"></script>
+  <script src="Avatar%20Animation/builder.js?v=1.2.0"></script>
 
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
