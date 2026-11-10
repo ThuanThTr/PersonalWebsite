@@ -1,7 +1,7 @@
 // Taffy-face renderer (WebGL2), adapted from the earlier face-hero kit.
 // The portrait is a dense grid; each grab drags nearby vertices by a gaussian
 // of their rest distance, so a long pull becomes a tapering tube, and a damped
-// spring snaps it back with a wobble. While held, the face flushes (cheeks, then
+// spring snaps it back with a wobble. A flush value reddens the cheeks, then
 // the face. Changes from the kit: no backdrop disc (the shirt fades out
 // instead), and the pupils are drawn in the shader at positions supplied by
 // the eye tracker, so they move with the eyes and stretch with the skin.
@@ -42,7 +42,6 @@ in vec2 vUv;
 in float vStretch;
 uniform sampler2D uTex;
 uniform float uFlush;
-uniform float uHold;    // 1 while held, fades out fast on release
 uniform vec4 uCheeks;
 uniform vec4 uFace;
 uniform vec3 uNose;
@@ -81,7 +80,7 @@ void main() {
   vec2 e = (vUv - uFace.xy) / uFace.zw;
   float face = 1.0 - smoothstep(0.55, 1.05, length(e));
   float m = blush * smoothstep(0.0, 0.5, uFlush) + face * smoothstep(0.4, 1.0, uFlush) * 0.9;
-  m += clamp(vStretch * 0.7, 0.0, 0.45) * uHold;
+  m += clamp(vStretch * 0.7, 0.0, 0.45);
   m = clamp(m, 0.0, 1.0) * skin;
   rgb *= mix(vec3(1.0), vec3(1.08, 0.56, 0.54), m);
 
@@ -108,9 +107,7 @@ function compile(gl) {
 }
 
 export class FaceEngine {
-  flush = 0; // strain: builds while held, recovers slowly (drives patience and mood)
-  shade = 0; // what the face shows: follows `flush` while held, clears right after release
-  hold = 0;
+  flush = 0;
   stage = {x: 0, y: 0, size: 1};
   view = {w: 1, h: 1, dpr: 1};
   lastHeld = 0;
@@ -129,7 +126,7 @@ export class FaceEngine {
     this.ink = ink;
     this.prog = compile(gl);
     this.u = Object.fromEntries(
-      ['uView', 'uStage', 'uGrab', 'uTex', 'uFlush', 'uHold', 'uCheeks', 'uFace', 'uNose', 'uPupils', 'uPupilR', 'uInk', 'uFade'].map((n) => [
+      ['uView', 'uStage', 'uGrab', 'uTex', 'uFlush', 'uCheeks', 'uFace', 'uNose', 'uPupils', 'uPupilR', 'uInk', 'uFade'].map((n) => [
         n,
         gl.getUniformLocation(this.prog, n),
       ]),
@@ -310,15 +307,6 @@ export class FaceEngine {
     } else if (now - this.lastHeld > 1600) {
       this.flush = Math.max(0, this.flush - dt * 0.07);
     }
-
-    // The colour clears within ~0.12s of letting go, whatever the strain.
-    if (this.held) {
-      this.shade = this.flush;
-      this.hold = 1;
-    } else {
-      this.shade = Math.max(0, this.shade - dt * 8);
-      this.hold = Math.max(0, this.hold - dt * 8);
-    }
   }
 
   /** pupils: [{u, v}, {u, v}] in rest UV; lid: 1 open → ~0.1 shut. */
@@ -336,8 +324,7 @@ export class FaceEngine {
     const g = new Float32Array(SLOTS * 4);
     this.slots.forEach((s, i) => s.live && g.set([s.ax, s.ay, s.ox, s.oy], i * 4));
     gl.uniform4fv(this.u.uGrab, g);
-    gl.uniform1f(this.u.uFlush, this.shade);
-    gl.uniform1f(this.u.uHold, this.hold);
+    gl.uniform1f(this.u.uFlush, this.flush);
     gl.uniform4f(this.u.uCheeks, cheeks[0].x, cheeks[0].y, cheeks[1].x, cheeks[1].y);
     gl.uniform4f(this.u.uFace, face.x, face.y, face.rx, face.ry);
     gl.uniform3f(this.u.uNose, nose.x, nose.y, nose.r);
