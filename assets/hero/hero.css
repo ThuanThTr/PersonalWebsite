@@ -161,7 +161,6 @@
   text-transform: uppercase;
   color: var(--secondary-color);
 }
-/* Tabular numerals: every digit is the same width, so the number doesn't jitter as it changes. */
 .hero-num {
   font-variant-numeric: tabular-nums;
 }
@@ -181,10 +180,7 @@
   height: 100%;
   border-radius: inherit;
   background: var(--primary-accent);
-  /* Long enough to notice a change, short enough to keep up with a pull. */
-  transition:
-    width 0.35s ease-out,
-    background-color 0.35s ease-out;
+  transition: width 0.15s;
 }
 
 /* ------------------------------------------------------------------------

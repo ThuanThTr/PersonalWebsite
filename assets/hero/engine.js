@@ -307,9 +307,8 @@ export class FaceEngine {
     if (this.held) {
       this.lastHeld = now;
       this.flush = Math.min(1, this.flush + dt * 0.3 * Math.min(1, this.stretch / 0.4 + 0.15));
-    } else if (now - this.lastHeld > 600) {
-      // Patience refills visibly: starts 0.6s after letting go, empty to full in ~4s.
-      this.flush = Math.max(0, this.flush - dt * 0.25);
+    } else if (now - this.lastHeld > 1600) {
+      this.flush = Math.max(0, this.flush - dt * 0.07);
     }
 
     // The colour clears within ~0.12s of letting go, whatever the strain.

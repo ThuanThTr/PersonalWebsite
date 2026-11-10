@@ -12,6 +12,6 @@ if (hero) {
     num.textContent = `${patience}%`;
     fill.style.width = `${patience}%`;
     // Drains from ink to red as patience runs out.
-    fill.style.backgroundColor = `color-mix(in oklab, var(--primary-accent) ${patience}%, #e8412c)`;
+    fill.style.background = `color-mix(in oklab, var(--primary-accent) ${patience}%, #e8412c)`;
   });
 }
