@@ -1,0 +1,531 @@
+/*
+ * Home hero: hint + headline on top, then avatar (centre), copy (left) and
+ * mood meter (right) on wide screens; a single stack on narrow ones. Uses the
+ * site's tokens and Inter from assets/css/styles.css.
+ * Note: the site sets html { font-size: 62.5% }, so 1rem = 10px here.
+ */
+.hero {
+  --hero-marker: #f2b31b;
+  /* Headline size: two lines on phones, one line from 640px. Also used to tuck the avatar under it. */
+  --hero-type: min(13.5vw, 76px);
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Wider than the 60rem column so the three columns fit; 16px gutters. */
+  width: calc(2 * min(50vw - 16px, 600px));
+  margin-left: calc(50% - min(50vw - 16px, 600px));
+  text-align: center;
+  color: var(--primary-color);
+}
+@media (min-width: 640px) {
+  .hero {
+    --hero-type: min(calc((100vw - 64px) / 10.2), 84px);
+  }
+}
+
+/* Less top padding than the column's default (12vh) so the hero sits higher. */
+.home-column:has(> .hero) {
+  padding-top: max(3.2rem, 6vh);
+}
+
+/* Hint: sits directly above "Xin chào," (it lives inside that button). */
+.hero-hint {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  translate: -50% 0;
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  color: var(--primary-accent);
+}
+
+/* 2. Headline */
+.hero-title {
+  width: max-content;
+  margin-top: 1.6rem; /* room for the hint above "Xin chào," */
+  padding-block: 0.08em;
+  font-size: var(--hero-type);
+  font-weight: 900;
+  line-height: 1.16;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.hero-line {
+  display: block;
+}
+@media (min-width: 640px) {
+  .hero-title {
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+  .hero-line {
+    display: inline;
+  }
+}
+.hero-hello {
+  position: relative;
+  cursor: pointer;
+  border-radius: 0.08em;
+}
+.hero-hello:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 4px;
+}
+/* Highlighter pass on the lower half of the name. */
+.hero-marker {
+  padding-inline: 0.05em;
+  background: linear-gradient(transparent 54%, var(--hero-marker) 54%, var(--hero-marker) 90%, transparent 90%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Pronunciation guide, opened by tapping "Xin chào," (scripts.js toggles .is-flipped). */
+.hero-pron {
+  display: none;
+  max-width: 52ch;
+  margin-top: 1.2rem;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--primary-accent);
+}
+.hero-pron p + p {
+  margin-top: 0.6rem;
+}
+.hero:has(.hero-hello.is-flipped) .hero-pron {
+  display: block;
+}
+
+/* 3. Avatar, with the mood meter and the copy always stacked under it. */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  width: 100%;
+  text-align: left;
+}
+.hero-side {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 42rem;
+  margin-top: 2rem;
+}
+.hero-copy {
+  margin-top: 1.6rem;
+}
+
+@media (min-width: 640px) {
+  .hero-side {
+    max-width: 46rem;
+  }
+}
+
+/* Social icons under the meter */
+.home .hero .site-social {
+  margin-top: 0.8rem;
+  margin-left: -1rem; /* optically align the first icon with the text */
+}
+.home .hero .site-social ul {
+  gap: 0.4rem;
+}
+.home .hero .site-social a {
+  width: 44px;
+  height: 44px;
+}
+
+/* Mood meter */
+.hero-meter-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+.hero-meter-row--bar {
+  margin-bottom: 0.6rem;
+}
+.hero-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+}
+.hero-num {
+  font-variant-numeric: tabular-nums;
+}
+.hero-mood {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.hero-track {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-color);
+}
+.hero-fill {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--primary-accent);
+  transition: width 0.15s;
+}
+
+/* ------------------------------------------------------------------------
+ * <site-avatar> (assets/hero/avatar.js)
+ * --------------------------------------------------------------------- */
+.hero-avatar {
+  display: block;
+  position: relative;
+  width: clamp(240px, 64vw, 340px);
+  aspect-ratio: 1;
+  margin-top: 11rem; /* room for the notes above the avatar on phones */
+}
+@media (min-width: 640px) {
+  .hero-avatar {
+    width: clamp(260px, min(42vw, 46svh), 440px);
+    margin-top: 0;
+  }
+}
+@media (min-width: 960px) {
+  /* Tuck up under the headline so the hair breaks over the type. */
+  .hero-grid {
+    --avatar-w: clamp(280px, min(32vw, 44svh), 440px);
+  }
+  .hero-avatar {
+    --note-top: calc(var(--hero-type) * 0.55 + 1rem); /* keep the top notes below the headline */
+    width: var(--avatar-w);
+    margin-top: calc(var(--hero-type) * -0.55);
+  }
+}
+/* While the pronunciation guide is open, sit below it instead of tucking up over it. */
+@media (min-width: 640px) {
+  .hero:has(.hero-hello.is-flipped) .hero-avatar {
+    --note-top: 0px;
+    margin-top: 2.4rem;
+  }
+}
+
+.avatar-figure {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  height: 100%;
+  border-radius: 40% 40% 12% 12%;
+  cursor: grab;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.avatar-figure:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 4px;
+}
+.avatar-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* Fade the shirt out so the bust sits on the page with no backdrop. */
+  -webkit-mask-image: linear-gradient(#000 80%, transparent 98.5%);
+  mask-image: linear-gradient(#000 80%, transparent 98.5%);
+}
+/* With WebGL the canvas draws the face; the SVG keeps its box for layout and eye maths. */
+.hero-avatar.is-gl .avatar-svg {
+  visibility: hidden;
+}
+/* Without WebGL: a small tilt/bounce on hover instead of the jelly bounce. */
+@media (hover: hover) {
+  .hero-avatar:not(.is-gl) .avatar-figure:hover {
+    transform: rotate(-2deg) translateY(-4px);
+  }
+}
+
+/* Full-hero canvas: the stretched face can spill over the copy; never takes pointer events. */
+.avatar-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Notes: "urban innovator.", "city systems thinker.", "data analyst.", "nature lover."
+ * All appear together. Each arrow points at the avatar but ends outside it.
+ * Phones: a two-row grid above the avatar; the bottom row's arrows point down at it. */
+.avatar-notes {
+  position: absolute;
+  z-index: 40;
+  bottom: calc(100% + 3rem);
+  left: 50%;
+  translate: -50% 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem 1.2rem;
+  width: min(100vw - 32px, 36rem);
+  pointer-events: none;
+}
+.avatar-note {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+  color: var(--primary-color);
+  opacity: 0;
+  translate: 0 6px;
+  transition:
+    opacity 0.3s ease,
+    translate 0.3s ease;
+}
+.avatar-note:nth-child(odd) {
+  justify-self: end;
+}
+.avatar-note--tl { rotate: -4deg; }
+.avatar-note--tr { rotate: 3deg; }
+.avatar-note--l { rotate: 3deg; }
+.avatar-note--r { rotate: -4deg; }
+
+.avatar-note-arrow {
+  position: absolute;
+  width: 3.2rem;
+  height: 2.8rem;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.avatar-note-arrow path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.4s ease 0.1s;
+}
+.avatar-note-arrow path + path {
+  transition-delay: 0.42s;
+  transition-duration: 0.15s;
+}
+/* Phones: only the bottom row has arrows, curving down toward the middle. */
+.avatar-note--tl .avatar-note-arrow,
+.avatar-note--tr .avatar-note-arrow {
+  display: none;
+}
+.avatar-note--l .avatar-note-arrow,
+.avatar-note--r .avatar-note-arrow {
+  top: 85%;
+}
+/* Under the middle of each word, leaning slightly inward, so the two never cross. */
+.avatar-note--l .avatar-note-arrow {
+  left: 50%;
+  transform: scaleX(-1) rotate(-72deg);
+}
+.avatar-note--r .avatar-note-arrow {
+  left: 25%;
+  transform: rotate(-72deg);
+}
+
+.hero-avatar.is-noted .avatar-note {
+  opacity: 1;
+  translate: 0 0;
+}
+.hero-avatar.is-noted .avatar-note-arrow path {
+  stroke-dashoffset: 0;
+}
+
+/* Wider screens: one note in each upper corner and one on each side. */
+@media (min-width: 640px) {
+  .avatar-notes {
+    display: block;
+    inset: 0;
+    bottom: auto;
+    left: 0;
+    translate: none;
+    width: auto;
+    height: 100%;
+  }
+  .avatar-note {
+    position: absolute;
+    font-size: clamp(1.6rem, 1.4vw, 1.9rem);
+  }
+  .avatar-note-arrow,
+  .avatar-note--tl .avatar-note-arrow,
+  .avatar-note--tr .avatar-note-arrow {
+    display: block;
+    width: 4.4rem;
+    height: 3.9rem;
+  }
+  /* Upper corners: curved arrows down toward the hair, ending beside it. */
+  .avatar-note--tr {
+    top: max(13%, var(--note-top, 0px));
+    left: 90%;
+  }
+  .avatar-note--tl {
+    top: max(13%, var(--note-top, 0px));
+    right: 90%;
+  }
+  .avatar-note--tr .avatar-note-arrow {
+    top: calc(100% - 0.4rem);
+    left: -3.4rem;
+    transform: none;
+  }
+  .avatar-note--tl .avatar-note-arrow {
+    top: calc(100% - 0.4rem);
+    right: -3.4rem;
+    left: auto;
+    transform: scaleX(-1);
+  }
+  /* Sides: flatter arrows toward the ears, ending beside them. */
+  .avatar-note--r {
+    top: 30%;
+    left: 104%;
+  }
+  .avatar-note--l {
+    top: 30%;
+    right: 104%;
+  }
+  .avatar-note--r .avatar-note-arrow {
+    top: 50%;
+    left: -4.8rem;
+    translate: 0 -40%;
+    transform: none;
+  }
+  .avatar-note--l .avatar-note-arrow {
+    top: 50%;
+    right: -4.8rem;
+    left: auto;
+    translate: 0 -40%;
+    transform: scaleX(-1);
+  }
+}
+
+/* "pull my face" hint: shown with WebGL until the first pull. */
+.avatar-hint {
+  position: absolute;
+  z-index: 40;
+  top: 57%;
+  right: -6%;
+  rotate: 6deg;
+  font-size: 1.4rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--primary-accent);
+  pointer-events: none;
+  transition:
+    opacity 0.4s,
+    translate 0.4s;
+}
+.avatar-hint svg {
+  display: block;
+  width: 3.6rem;
+  height: 2.4rem;
+  margin-left: 0.4rem;
+  transform: scaleX(-1);
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Wider screens: on the left of the avatar (the right side holds the mood/copy column). */
+@media (min-width: 640px) {
+  .avatar-hint {
+    top: 58%;
+    right: 92%;
+    rotate: -6deg;
+    font-size: 1.6rem;
+  }
+  .avatar-hint svg {
+    margin-left: auto;
+    transform: none;
+  }
+}
+.hero-avatar:not(.is-gl) .avatar-hint {
+  display: none;
+}
+.avatar-hint[data-gone='1'] {
+  opacity: 0;
+  translate: 0 8px;
+}
+
+/* Grab cursor: a ring that shows over the face and tightens while held. */
+.avatar-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+.avatar-ring::before,
+.avatar-ring::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0;
+  mix-blend-mode: difference;
+  transition:
+    transform 0.18s cubic-bezier(0.3, 1.6, 0.5, 1),
+    opacity 0.18s;
+}
+.avatar-ring::before {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid #fff;
+  transform: scale(0.6);
+}
+.avatar-ring::after {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #fff;
+}
+.avatar-ring[data-on='1']::before,
+.avatar-ring[data-on='1']::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.avatar-ring[data-held='1']::before {
+  transform: scale(0.62);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Reduced motion: fades only. No tilt, no slide, arrow already drawn. */
+@media (prefers-reduced-motion: reduce) {
+  .avatar-figure,
+  .hero-avatar:not(.is-gl) .avatar-figure:hover {
+    transition: none;
+    transform: none;
+  }
+  .avatar-note,
+  .hero-avatar.is-noted .avatar-note {
+    transition: opacity 0.2s ease;
+    translate: none;
+  }
+  .avatar-note-arrow path {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+  .avatar-hint,
+  .avatar-ring::before,
+  .avatar-ring::after,
+  .hero-fill {
+    transition: none;
+  }
+}
