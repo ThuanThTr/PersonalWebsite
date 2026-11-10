@@ -26,23 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const roles = ['an urban innovator', 'a policy strategist', 'a city systems thinker', 'a data analyst'];
-  const roleEl = document.getElementById('role-cycle');
-  if (!roleEl) return;
-
-  let roleIndex = 0;
-
-  setInterval(() => {
-    roleEl.classList.add('is-fading');
-    setTimeout(() => {
-      roleIndex = (roleIndex + 1) % roles.length;
-      roleEl.textContent = roles[roleIndex];
-      roleEl.classList.remove('is-fading');
-    }, 300);
-  }, 2500);
-});
-
 // Single source of truth for dated work — add an entry here and it automatically
 // becomes the "latest" one shown in the home page teaser card and at the top
 // of the projects / writings lists. Undated placeholders (e.g. a "current

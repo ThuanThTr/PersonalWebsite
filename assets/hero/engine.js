@@ -276,11 +276,6 @@ export class FaceEngine {
     return this.slots.some((s) => s.pointer !== null);
   }
 
-  /** True while any part of the face is still away from rest. */
-  get moving() {
-    return this.slots.some((s) => s.live) || this.flush > 0;
-  }
-
   /** Longest current pull as a fraction of the stage. */
   get stretch() {
     return Math.max(0, ...this.slots.map((s) => (s.live ? Math.hypot(s.ox, s.oy) / this.stage.size : 0)));
@@ -355,9 +350,5 @@ export class FaceEngine {
     gl.uniform1i(this.u.uTex, 0);
     gl.bindVertexArray(this.vao);
     gl.drawElements(gl.TRIANGLES, this.indexCount, gl.UNSIGNED_SHORT, 0);
-  }
-
-  destroy() {
-    this.gl.getExtension('WEBGL_lose_context')?.loseContext();
   }
 }
