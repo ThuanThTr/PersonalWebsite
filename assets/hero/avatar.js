@@ -358,7 +358,8 @@ class SiteAvatar extends HTMLElement {
     const f = this.figure;
 
     f.addEventListener('pointerdown', (e) => {
-      if (!this.engine) return;
+      // Main button only: a right-click opens the context menu, which swallows the release.
+      if (!this.engine || (e.pointerType === 'mouse' && e.button !== 0)) return;
       this.layout();
       const p = this.local(e);
       const at = this.engine.pick(p.x, p.y);
@@ -413,6 +414,15 @@ class SiteAvatar extends HTMLElement {
     };
     f.addEventListener('pointerup', up);
     f.addEventListener('pointercancel', up);
+    // Never leave a pull stuck: if the browser drops the pointer, the release lands
+    // elsewhere, or the window loses focus mid-pull, treat it as letting go.
+    f.addEventListener('lostpointercapture', up);
+    window.addEventListener('pointerup', up);
+    const releaseAll = () => {
+      for (const pointerId of [...this.downs.keys()]) up({pointerId, pointerType: 'none', clientX: 0, clientY: 0});
+    };
+    window.addEventListener('blur', releaseAll);
+    document.addEventListener('visibilitychange', () => document.hidden && releaseAll());
     f.addEventListener('pointerleave', () => this.ring && (this.ring.dataset.on = ''));
 
     // Touch: block the page scroll only when the finger lands on the face.
