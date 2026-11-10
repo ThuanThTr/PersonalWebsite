@@ -147,7 +147,10 @@
   justify-content: space-between;
   margin-bottom: 1.2rem;
 }
+/* Patience: the number sits right beside its label, not at the far end of the row. */
 .hero-meter-row--bar {
+  justify-content: flex-start;
+  gap: 0.8rem;
   margin-bottom: 0.6rem;
 }
 .hero-label {
@@ -158,6 +161,7 @@
   text-transform: uppercase;
   color: var(--secondary-color);
 }
+/* Tabular numerals: every digit is the same width, so the number doesn't jitter as it changes. */
 .hero-num {
   font-variant-numeric: tabular-nums;
 }
@@ -177,7 +181,10 @@
   height: 100%;
   border-radius: inherit;
   background: var(--primary-accent);
-  transition: width 0.15s;
+  /* Long enough to notice a change, short enough to keep up with a pull. */
+  transition:
+    width 0.35s ease-out,
+    background-color 0.35s ease-out;
 }
 
 /* ------------------------------------------------------------------------
