@@ -1,6 +1,6 @@
 // <site-avatar>: the illustrated portrait. It has:
 // - eyes that follow the pointer (blink + idle glances when nobody steers);
-// - handwritten notes ("city systems thinker.", "urban innovator."…) that all
+// - handwritten notes ("system thinker.", "urban innovator."…) that all
 //   appear around it on hover, focus or tap;
 // - a stretchable face (WebGL2, see engine.js): grab and pull it like taffy, it
 //   snaps back with a wobble and flushes the longer it's mistreated.
@@ -54,7 +54,7 @@ const RIG = {
 // (top-left, top-right, left, right); its arrow points in but stops short of the drawing.
 const NOTES = [
   {text: 'urban innovator.', pos: 'tl'},
-  {text: 'city systems thinker.', pos: 'tr'},
+  {text: 'system thinker.', pos: 'tr'},
   {text: 'data analyst.', pos: 'l'},
   {text: 'nature lover.', pos: 'r'},
 ];

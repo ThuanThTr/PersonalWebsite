@@ -205,9 +205,9 @@
     --avatar-w: clamp(280px, min(32vw, 44svh), 440px);
   }
   .hero-avatar {
-    --note-top: calc(var(--hero-type) * 0.55 + 1rem); /* keep the top notes below the headline */
+    --note-top: calc(var(--hero-type) * 0.3 + 1rem); /* keep the top notes below the headline */
     width: var(--avatar-w);
-    margin-top: calc(var(--hero-type) * -0.55);
+    margin-top: calc(var(--hero-type) * -0.3);
   }
 }
 /* While the pronunciation guide is open, sit below it instead of tucking up over it. */
@@ -263,7 +263,7 @@
   pointer-events: none;
 }
 
-/* Notes: "urban innovator.", "city systems thinker.", "data analyst.", "nature lover."
+/* Notes: "urban innovator.", "system thinker.", "data analyst.", "nature lover."
  * All appear together. Each arrow points at the avatar but ends outside it.
  * Phones: a two-row grid above the avatar; the bottom row's arrows point down at it. */
 .avatar-notes {
