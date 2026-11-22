@@ -143,10 +143,10 @@
       </dl>
 
       <div class="teaser-grid">
-        <a class="teaser" id="featured-project-card" href="projects/airports/">
-          <p class="teaser-label">latest project</p>
-          <p class="teaser-title">World Airports</p>
-          <p class="teaser-text">An interactive map of every airport in the OpenFlights database, built with MapLibre and Supercluster.</p>
+        <a class="teaser" id="featured-project-card" href="#projects" data-panel="projects">
+          <p class="teaser-label">projects</p>
+          <p class="teaser-title">Projects</p>
+          <p class="teaser-text">Projects on spatial data, urban strategy, and policy are coming soon.</p>
         </a>
         <a class="teaser" id="featured-blog-card" href="#writings" data-panel="writings">
           <p class="teaser-label">writing</p>
@@ -158,7 +158,9 @@
 
     <section class="home-panel" id="panel-projects" aria-label="projects" hidden>
       <!-- Rendered from the projects array in assets/js/scripts.js -->
-      <ol class="entry-feed" id="project-list"></ol>
+      <ol class="entry-feed" id="project-list">
+        <li class="feed-empty">No published projects yet. Work on spatial data, urban strategy, and policy is coming soon.</li>
+      </ol>
     </section>
 
     <section class="home-panel" id="panel-writings" aria-label="writings" hidden>
@@ -169,7 +171,7 @@
     </section>
   </main>
 
-  <script src="assets/js/scripts.js?v=1.6.4"></script>
+  <script src="assets/js/scripts.js?v=1.6.5"></script>
   <script type="module" src="assets/hero/hero.js?v=1.6.0"></script>
 
   <!-- 100% privacy-first analytics -->

@@ -35,22 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //   summary  — one line for the home page teaser card
 //   teaser   — 2–3 sentences shown in the lists
 const projects = [
-  {
-    title: 'World Airports',
-    subtitle: 'Interactive web map · MapLibre, Supercluster',
-    summary: 'An interactive map of every airport in the OpenFlights database, built with MapLibre and Supercluster.',
-    teaser: 'This map plots every airport in the OpenFlights database in one interactive view. Points are clustered with Supercluster, so thousands of locations stay readable at any zoom level. I built it as a lightweight experiment in serving large spatial datasets on the web.',
-    date: '2026-10-16',
-    href: 'projects/airports/'
-  },
-  {
-    title: 'Urban Systems Portfolio',
-    subtitle: 'Research · urban strategy, data & policy',
-    summary: 'Research, strategy, and data-driven work focused on better city futures.',
-    teaser: 'A growing body of research, strategy, and data-driven work focused on better city futures. It brings together policy analysis, spatial data, and community-centered thinking for the Greater Toronto Area and beyond.',
-    date: '2025-01-01',
-    href: 'projects/'
-  }
+  // e.g. { title: 'Project name', subtitle: 'Type · tools', teaser: 'Two or three sentences.', summary: 'One line for the home teaser.', date: '2026-01-01', href: 'projects/project-slug/' }
 ];
 
 const blogPosts = [
@@ -73,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const latestProject = getLatest(projects);
   if (projectCard && latestProject) {
     projectCard.href = resolveHref(latestProject.href);
+    projectCard.removeAttribute('data-panel');
+    projectCard.querySelector('.teaser-label').textContent = 'latest project';
     projectCard.querySelector('.teaser-title').textContent = latestProject.title;
     projectCard.querySelector('.teaser-text').textContent = latestProject.summary;
   }
@@ -105,7 +92,7 @@ const renderEntry = (item) => `
 
 document.addEventListener('DOMContentLoaded', () => {
   const projectList = document.getElementById('project-list');
-  if (projectList) {
+  if (projectList && projects.length) {
     projectList.innerHTML = sortNewestFirst(projects).map(renderEntry).join('');
   }
 

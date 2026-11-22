@@ -45,31 +45,26 @@
     </div>
   </header>
 
-  <main>
+  <main class="page">
 
-    <!-- PROJECTS SECTION -->
+    <header class="page-header">
+      <h1>projects</h1>
+      <p>Maps, research, and tools on cities, data, and policy.</p>
+    </header>
 
-    <section class="about-section" aria-label="projects section">
-      <div class="about">
-        <h2>projects</h2>
-        <div class="about-list about-projects">
+    <!-- PROJECTS: rendered from projects in assets/js/scripts.js -->
 
-          <ol class="entry-feed" id="project-list"></ol>
-
-          <div class="about-item">
-            <h3>current focus <span class="about-item-note">in progress</span></h3>
-            <p class="languages-tag">urban strategy, research &amp; data <span class="project-date">2026</span></p>
-            <p>I am building a sharper body of work on cities, public systems, and community-centered innovation for the Greater Toronto Area and beyond.</p>
-          </div>
-
-        </div>
-      </div>
+    <section class="page-section" aria-labelledby="projects-heading">
+      <h2 class="section-label" id="projects-heading">All projects</h2>
+      <ol class="entry-feed" id="project-list">
+        <li class="feed-empty">No published projects yet. Work on spatial data, urban strategy, and policy is coming soon.</li>
+      </ol>
     </section>
 
   </main>
 
 
-  <script src="../assets/js/scripts.js?v=1.6.4"></script>
+  <script src="../assets/js/scripts.js?v=1.6.5"></script>
 
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
