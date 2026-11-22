@@ -1,0 +1,86 @@
+/*
+ * Home page intro (assets/preloader/preloader.js).
+ * Plays once per browser session; html.is-loading is set in index.html's <head>.
+ * Colours come from the site tokens in assets/css/styles.css.
+ */
+html.is-loading, html.is-loading body { overflow: hidden; }
+.pl-skip:focus-visible { outline: 3px solid var(--primary-color); outline-offset: 3px; border-radius: 6px; }
+/* ================= PRELOADER ================= */
+.pl {
+  --hero-marker: #f2b31b;
+  --paper: #ffffff;
+  position: fixed; inset: 0; z-index: 2000; display: none;
+  font-family: InterVariable, Inter, sans-serif;
+  font-size: 16px; /* the site's html is 62.5%; keep inherited text readable */
+}
+html.is-loading .pl { display: block; }
+
+/* Curtain: columns of the home page background with hairline grid lines */
+.pl-grid { position: absolute; inset: 0; display: flex; }
+.pl-col { flex: 1; background: var(--background-color); border-right: 1px solid var(--surface-color); }
+.pl-col:last-child { border-right: 0; }
+
+.pl-stage { position: absolute; inset: 0; visibility: hidden; }
+.pl.is-ready .pl-stage { visibility: visible; }
+
+.pl-guide { position: absolute; left: 0; right: 0; height: 0; border-top: 1px dashed var(--subtle); opacity: .6; }
+.pl-cross { position: absolute; width: 11px; height: 11px; margin: -5px 0 0 -5px; }
+.pl-cross::before, .pl-cross::after { content: ""; position: absolute; background: var(--subtle); }
+.pl-cross::before { left: 5px; top: 0; width: 1px; height: 11px; }
+.pl-cross::after { top: 5px; left: 0; height: 1px; width: 11px; }
+
+.pl-push { position: absolute; inset: 0; will-change: transform; }
+
+/* The name: same type as .hero-title / .hero-marker on the home page */
+.pl-word {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; align-items: baseline; white-space: nowrap;
+  font-weight: 900; line-height: 1.16; letter-spacing: -0.04em; text-transform: uppercase;
+  color: var(--primary-color);
+}
+.pl-marker {
+  position: absolute; left: -0.05em; right: -0.01em; top: 54%; bottom: 10%;
+  background: var(--hero-marker); transform-origin: 0 50%; transform: scaleX(0);
+}
+.pl-l { position: relative; display: inline-block; will-change: transform; }
+.pl-g { display: inline-block; }
+.pl-base { display: inline-block; width: 0; height: 0; }
+
+/* Character: flat line art, ink #09090b on white, like the reference illustrations */
+.pl-char { position: absolute; left: 0; top: 0; transform: translate3d(-200vw, 0, 0); will-change: transform; }
+.pl-char svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.pl-char svg * {
+  stroke: var(--primary-color); stroke-width: 1.5px; stroke-linejoin: round; stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.pl-char .ink { fill: var(--primary-color); }
+.pl-char .paper { fill: var(--paper); }
+.pl-char .back { fill: var(--surface-color); }
+.pl-char .line { fill: none; }
+.pl-char .fold { fill: none; stroke: var(--paper); }
+.pl-char .shadow { fill: var(--primary-color); stroke: none; opacity: .08; }
+
+/* Progress bar along the bottom edge (echoes the home page patience bar) */
+.pl-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--surface-color); }
+.pl-bar-fill { height: 100%; background: var(--primary-accent); transform-origin: 0 50%; transform: scaleX(0); }
+
+.pl-count {
+  position: absolute; left: 20px; bottom: 24px;
+  font-size: 13px; font-weight: 500; color: var(--primary-accent); font-variant-numeric: tabular-nums;
+}
+.pl-count b { font-weight: 600; color: var(--primary-color); }
+
+.pl-skip {
+  background: none; border: 0; cursor: pointer; font-family: inherit;
+  position: absolute; right: 20px; bottom: 14px;
+  font-size: 13px; font-weight: 500; color: var(--primary-accent); padding: 10px 4px;
+  text-decoration: underline; text-decoration-color: var(--subtle); text-underline-offset: 4px;
+  transition: color .15s, text-decoration-color .15s;
+}
+.pl-skip:hover { color: var(--primary-color); text-decoration-color: currentColor; }
+.pl-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .pl-skip { right: 12px; }
+  .pl-count { left: 16px; }
+}
