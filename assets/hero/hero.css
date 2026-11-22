@@ -37,11 +37,12 @@
   bottom: 100%;
   left: 50%;
   translate: -50% 0;
-  margin-bottom: 0.2rem;
-  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.3rem;
   font-weight: 500;
   line-height: 1.2;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
+  text-transform: none;
   white-space: nowrap;
   color: var(--primary-accent);
 }
@@ -154,11 +155,9 @@
   margin-bottom: 0.6rem;
 }
 .hero-label {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 500;
   line-height: 1.2;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--secondary-color);
 }
 .hero-num {

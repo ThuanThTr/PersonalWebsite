@@ -26,20 +26,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Single source of truth for dated work — add an entry here and it automatically
-// becomes the "latest" one shown in the home page teaser card and at the top
-// of the projects / writings lists. Undated placeholders (e.g. a "current
+// Single source of truth for dated work — add an entry here and it shows up
+// at the top of the projects / writings lists. Undated placeholders (e.g. a "current
 // focus" note) stay as static HTML instead of living in these arrays.
 //   title    — project / post name
 //   subtitle — one short line (type of work, tools, or topic)
-//   summary  — one line for the home page teaser card
+//   summary  — one line (used when there is no teaser)
 //   teaser   — 2–3 sentences shown in the lists
 const projects = [
-  // e.g. { title: 'Project name', subtitle: 'Type · tools', teaser: 'Two or three sentences.', summary: 'One line for the home teaser.', date: '2026-01-01', href: 'projects/project-slug/' }
+  // e.g. { title: 'Project name', subtitle: 'Type · tools', teaser: 'Two or three sentences.', date: '2026-01-01', href: 'projects/project-slug/' }
 ];
 
 const blogPosts = [
-  // e.g. { title: 'Post title', subtitle: 'Topic · 5 min read', teaser: 'Two or three sentences.', summary: 'One line for the home teaser.', date: '2026-01-01', href: 'writings/post-slug/' }
+  // e.g. { title: 'Post title', subtitle: 'Topic · 5 min read', teaser: 'Two or three sentences.', date: '2026-01-01', href: 'writings/post-slug/' }
 ];
 
 // Hrefs above are relative to the site root; resolve them from this script's
@@ -51,30 +50,6 @@ function sortNewestFirst(items) {
   return [...items].sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
-const getLatest = (items) => sortNewestFirst(items)[0] ?? null;
-
-document.addEventListener('DOMContentLoaded', () => {
-  const projectCard = document.getElementById('featured-project-card');
-  const latestProject = getLatest(projects);
-  if (projectCard && latestProject) {
-    projectCard.href = resolveHref(latestProject.href);
-    projectCard.removeAttribute('data-panel');
-    projectCard.querySelector('.teaser-label').textContent = 'latest project';
-    projectCard.querySelector('.teaser-title').textContent = latestProject.title;
-    projectCard.querySelector('.teaser-text').textContent = latestProject.summary;
-  }
-
-  // Stays a "Writings & Spatial Notes" teaser until the first post is added.
-  const blogCard = document.getElementById('featured-blog-card');
-  const latestBlog = getLatest(blogPosts);
-  if (blogCard && latestBlog) {
-    blogCard.href = resolveHref(latestBlog.href);
-    blogCard.removeAttribute('data-panel');
-    blogCard.querySelector('.teaser-label').textContent = 'latest writing';
-    blogCard.querySelector('.teaser-title').textContent = latestBlog.title;
-    blogCard.querySelector('.teaser-text').textContent = latestBlog.summary || latestBlog.teaser;
-  }
-});
 
 const formatDate = (date) =>
   new Date(`${date}T00:00:00`).toLocaleDateString('en-CA', { year: 'numeric', month: 'short' });
