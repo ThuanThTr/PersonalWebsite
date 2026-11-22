@@ -431,33 +431,6 @@ body {
   margin-top: 1.2rem;
 }
 
-/* The one statement the page makes about the work: hero weight, same highlighter as the name. */
-.home-intro .intro-lead {
-  font-size: 2.2rem;
-  font-weight: 650;
-  line-height: 1.28;
-  letter-spacing: -0.02em;
-  color: var(--primary-color);
-  text-wrap: balance;
-}
-
-@media (min-width: 768px) {
-  .home-intro .intro-lead {
-    font-size: 2.8rem;
-  }
-}
-
-.home-intro .intro-lead + p {
-  margin-top: 2.4rem;
-}
-
-.intro-mark {
-  padding-inline: 0.04em;
-  background: linear-gradient(transparent 58%, #f2b31b 58%, #f2b31b 92%, transparent 92%);
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
 /* PROJECT & WRITING FEEDS: plain text list */
 
 
