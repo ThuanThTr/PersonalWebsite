@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=1.19.0">
+
+  <!-- SEO -->
+  <title>GTHA Winter Maintenance Dashboard - Thuan Truong</title>
+  <meta name="description" content="An interactive dashboard comparing winter maintenance spending across the 26 municipalities of the Greater Toronto and Hamilton Area, 2015 to 2025.">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.thuantruong.com/projects/winter-maintenance/" />
+
+  <!-- Open Graph (LinkedIn, Facebook, Slack previews) -->
+  <meta property="og:title" content="GTHA Winter Maintenance Dashboard" />
+  <meta property="og:description" content="How much do GTHA municipalities spend on winter maintenance? An interactive dashboard covering 26 municipalities, 2015 to 2025." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.thuantruong.com/projects/winter-maintenance/" />
+  <meta property="og:site_name" content="Thuan Truong" />
+  <meta property="og:locale" content="en_CA" />
+  <meta property="og:image" content="https://www.thuantruong.com/assets/projects/winter-maintenance.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:alt" content="Map of GTHA municipalities shaded by winter maintenance spending per resident." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Browser Theme Colours -->
+  <meta name="theme-color" content="#f4f4f5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <ul>
+        <li><a href="../../index.html" class="nav-home" aria-label="thuận"><span aria-hidden="true">t</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></a></li>
+        <li><a href="../" aria-current="page">projects</a></li>
+        <li><a href="../../writings/">writings</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-social">
+      <ul>
+        <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" aria-label="LinkedIn"><img src="../../assets/icons/linkedin-icon.png" alt=""></a></li>
+        <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="../../assets/icons/email-icon.png" alt=""></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="page case">
+
+    <a class="case-back" href="../">← All projects</a>
+
+    <header class="page-header case-header">
+      <p class="case-kicker">Interactive dashboard · Municipal finance</p>
+      <h1>GTHA Winter Maintenance Dashboard</h1>
+      <p>How much do municipalities in the Greater Toronto and Hamilton Area spend to keep roads and sidewalks clear in winter, and why does it vary so much?</p>
+      <p class="case-byline">With <a href="https://www.thinhlang.com/" target="_blank" rel="noopener noreferrer" class="location-link">Thinh Lang<span class="sr-note"> (opens in a new tab)</span></a> · <time datetime="2026-11">November 2026</time></p>
+      <a class="row-btn case-cta" href="https://winter-maintenance-dashboard.vercel.app/" target="_blank" rel="noopener noreferrer">Open the dashboard<span class="sr-note"> (opens in a new tab)</span> <svg class="pcard-arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </header>
+
+    <figure class="case-figure">
+      <a href="https://winter-maintenance-dashboard.vercel.app/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+        <img src="../../assets/projects/winter-maintenance.jpg" alt="" width="1200" height="675" decoding="async">
+      </a>
+      <figcaption>Winter spending per resident by municipality, with a side-by-side comparison of Toronto and Mississauga.</figcaption>
+    </figure>
+
+    <dl class="case-facts">
+      <div><dt>Municipalities</dt><dd>26</dd></div>
+      <div><dt>Years</dt><dd>2015–2025</dd></div>
+      <div><dt>Measures</dt><dd>6</dd></div>
+    </dl>
+
+    <section class="case-section">
+      <h2>Why we built it</h2>
+      <p>After a heavy snowstorm in February 2025, Toronto’s mayor called for a full review of the city’s winter maintenance contracts. That raised a simple question: how does Toronto’s spending compare with its neighbours?</p>
+      <p>Each municipality reports what it spends on winter control to the province every year, but the numbers sit in separate financial returns. We put all 26 GTHA municipalities in one place so the gaps are easy to see and question.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>What you can explore</h2>
+      <ul class="case-list">
+        <li>Spending per resident, per kilometre of road, and in total</li>
+        <li>Winter spending as a share of operating expenses</li>
+        <li>Change in spending per resident since 2016</li>
+        <li>Estimated average snowfall, shown alongside spending</li>
+        <li>Any two municipalities side by side for a given year</li>
+      </ul>
+      <p>In 2024, for example, Toronto spent about $54 per resident on winter maintenance and Mississauga about $37. But per kilometre of road, Toronto spent more than twice as much.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>How we built it</h2>
+      <p>Spending comes from Ontario’s Financial Information Return (FIR), 2015 to 2025: winter control on roads, plus sidewalks and parking lots. Population comes from the 2016 and 2021 Censuses, road length from the Ontario Road Network, and snowfall from ClimateData.ca climate model estimates. We also checked each municipality’s levels of service against Ontario’s Minimum Maintenance Standards.</p>
+      <p>Of 286 municipality-years, 279 were reported. Missing years are shown as “No data” and left out of the calculations.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Read it with care</h2>
+      <p>The dashboard is for asking questions, not ranking municipalities. Higher spending is not necessarily less efficient. Differences reflect service levels, road networks and contracts, not just snowfall. Regional road budgets are excluded, dollars are not adjusted for inflation, and some years are unusual. The <a href="https://winter-maintenance-dashboard.vercel.app/project" target="_blank" rel="noopener noreferrer" class="location-link">full methodology<span class="sr-note"> (opens in a new tab)</span></a> covers every source, formula and limitation.</p>
+    </section>
+
+    <section class="case-section case-end">
+      <a class="row-btn" href="https://winter-maintenance-dashboard.vercel.app/" target="_blank" rel="noopener noreferrer">Open the dashboard<span class="sr-note"> (opens in a new tab)</span> <svg class="pcard-arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="case-more" href="../">See more projects →</a>
+    </section>
+
+  </main>
+
+  <!-- 100% privacy-first analytics -->
+  <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
+</body>
+</html>

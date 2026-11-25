@@ -39,7 +39,7 @@ const projects = [
     subtitle: 'Interactive dashboard · with <a href="https://www.thinhlang.com/" target="_blank" rel="noopener noreferrer" class="location-link">Thinh Lang<span class="sr-note"> (opens in a new tab)</span></a>',
     teaser: 'An interactive map comparing what municipalities across the Greater Toronto and Hamilton Area spend on winter maintenance. Explore spending per resident, per kilometre of road, and as a share of operating budgets from 2015 to 2025, alongside snowfall.',
     date: '2026-11-01',
-    href: 'https://winter-maintenance-dashboard.vercel.app/',
+    href: 'projects/winter-maintenance/',
     // Projects page card
     credit: 'with <a href="https://www.thinhlang.com/" target="_blank" rel="noopener noreferrer" class="location-link">Thinh Lang<span class="sr-note"> (opens in a new tab)</span></a>',
     categories: ['Interactive Dashboards', 'Municipal Finance'],
