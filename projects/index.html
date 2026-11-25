@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-  <link rel="stylesheet" href="../assets/css/styles.css?v=1.14.0">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=1.18.0">
 
   <!-- SEO -->
   <title>Projects - Thuan Truong</title>
@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- Browser Theme Colours -->
-  <meta name="theme-color" content="#fafafa">
+  <meta name="theme-color" content="#f4f4f5">
 
 </head>
 <body>
@@ -45,26 +45,33 @@
     </div>
   </header>
 
-  <main class="page">
+  <main class="page page--wide">
 
     <header class="page-header">
       <h1>projects</h1>
-      <p>Maps, research, and tools on cities, data, and policy.</p>
     </header>
 
-    <!-- PROJECTS: rendered from projects in assets/js/scripts.js -->
+    <!-- Cards and filters are rendered by assets/js/projects.js from the projects list in assets/js/scripts.js -->
+    <div class="projects-layout">
+      <section class="projects-main" aria-labelledby="projects-heading">
+        <h2 class="section-label" id="projects-heading">Projects</h2>
+        <p class="sr-note" role="status" id="projects-status"></p>
+        <ol class="pgrid" id="project-grid">
+          <li class="feed-empty">No projects published yet. The first one is on its way.</li>
+        </ol>
+      </section>
 
-    <section class="page-section" aria-labelledby="projects-heading">
-      <h2 class="section-label" id="projects-heading">All projects</h2>
-      <ol class="entry-feed" id="project-list">
-        <li class="feed-empty">No projects published yet. The first one is on its way.</li>
-      </ol>
-    </section>
+      <aside class="pfilter" aria-labelledby="pfilter-heading" hidden>
+        <h2 class="pfilter-title" id="pfilter-heading">Categories</h2>
+        <ul class="pfilter-list" id="project-filters"></ul>
+      </aside>
+    </div>
 
   </main>
 
 
-  <script src="../assets/js/scripts.js?v=1.6.6"></script>
+  <script src="../assets/js/scripts.js?v=1.8.0"></script>
+  <script src="../assets/js/projects.js?v=1.0.2"></script>
 
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
