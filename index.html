@@ -6,16 +6,29 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-  <link rel="stylesheet" href="assets/css/styles.css?v=1.19.0">
-  <link rel="stylesheet" href="assets/hero/hero.css?v=1.3.0">
+  <link rel="stylesheet" href="assets/css/styles.css?v=1.23.0">
+  <link rel="stylesheet" href="assets/hero/hero.css?v=1.5.0">
   <link rel="stylesheet" href="assets/preloader/preloader.css?v=1.0.0">
 
-  <!-- Intro: GSAP, and take over the screen only on a visitor's first page view this session -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Intro: plays once per session for visitors who come straight to the site (not from a link
+       on LinkedIn or another site). GSAP only loads when it will play. -->
   <script>
-    try {
-      if (window.gsap && !sessionStorage.getItem('intro-seen')) document.documentElement.classList.add('is-loading');
-    } catch (e) { /* storage blocked: skip the intro */ }
+    (function () {
+      var html = document.documentElement;
+      try {
+        if (sessionStorage.getItem('intro-seen')) return;
+        if (document.referrer && new URL(document.referrer).host !== location.host) return;
+      } catch (e) { return; }
+      html.classList.add('is-loading');
+      var giveUp = function () { html.classList.remove('is-loading'); };
+      var timer = setTimeout(giveUp, 4000);
+      var js = document.createElement('script');
+      js.id = 'gsap-js';
+      js.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+      js.onload = function () { clearTimeout(timer); };
+      js.onerror = function () { clearTimeout(timer); giveUp(); };
+      document.head.appendChild(js);
+    })();
   </script>
 
   <!-- SEO -->
@@ -29,12 +42,13 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- Browser Theme Colours -->
-  <meta name="theme-color" content="#fafafa">
+  <meta name="theme-color" content="#f4f4f5">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Thuan Truong | Urban Innovator in the Greater Toronto Area" />
   <meta property="og:description" content="Urban innovator in the Greater Toronto Area, using data to help cities make better decisions." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.thuantruong.com/" />
   <meta property="og:site_name" content="Thuan Truong" />
   <meta property="og:locale" content="en_CA" />
   <meta property="og:image" content="https://www.thuantruong.com/icon.png" />
@@ -99,11 +113,28 @@
     <button class="pl-skip" type="button">Skip intro</button>
   </div>
 
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="./" class="nav-home" aria-label="thuận, home"><span aria-hidden="true">t</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></a></li>
+        <li><a href="./projects/">projects</a></li>
+        <li><a href="./writings/">writings</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-social">
+      <ul>
+        <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)"><img src="./assets/images/icons/linkedin.svg" alt="" width="20" height="20"></a></li>
+        <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="./assets/images/icons/email.svg" alt="" width="20" height="20"></a></li>
+      </ul>
+    </div>
+  </header>
+
   <main class="home-column">
   <section class="hero" aria-labelledby="hero-title">
     <h1 class="hero-title" id="hero-title">
-      <span class="hero-line"><span class="hero-hello" id="greeting-toggle" role="button" tabindex="0" aria-pressed="false" aria-controls="pronunciation" aria-describedby="hero-hint"><span class="hero-hint" id="hero-hint" aria-hidden="true">Tap “Xin chào” for pronunciation</span>Xin chào,</span></span>
-      <span class="hero-line">I’m <span class="hero-marker">Thuận</span><span class="visually-hidden"> Truong</span></span>
+      <span class="hero-line"><span class="hero-hello" id="greeting-toggle" role="button" tabindex="0" aria-pressed="false" aria-controls="pronunciation" aria-describedby="hero-hint"><span class="hero-hint" id="hero-hint" aria-hidden="true">Tap “Xin chào” for pronunciation</span><span lang="vi">Xin chào,</span></span></span>
+      <span class="hero-line">I’m <span class="hero-marker" lang="vi">Thuận</span><span class="visually-hidden"> Truong</span></span>
     </h1>
 
     <div class="hero-pron" id="pronunciation">
@@ -115,54 +146,38 @@
     <div class="hero-grid">
       <site-avatar class="hero-avatar"></site-avatar>
 
-      <div class="hero-side">
-        <div class="hero-meter">
-          <div class="hero-meter-row">
-            <span class="hero-label">Current mood</span>
-            <span class="hero-mood">chill</span>
-          </div>
-          <div class="hero-meter-row hero-meter-row--bar">
-            <span class="hero-label">Patience</span>
-            <span class="hero-label hero-num">100%</span>
-          </div>
-          <div class="hero-track" aria-hidden="true"><div class="hero-fill"></div></div>
-        </div>
-
-        <div class="hero-copy">
-          <div class="site-social">
-            <ul>
-              <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" aria-label="LinkedIn"><img src="assets/icons/linkedin-icon.png" alt=""></a></li>
-              <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="assets/icons/email-icon.png" alt=""></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
     <hr class="home-divider">
 
-    <nav class="site-nav">
-      <ul>
-        <li hidden><a href="index.html" data-panel="home" aria-current="page">home</a></li>
-        <li><a href="projects/" data-panel="projects">projects</a></li>
-        <li><a href="writings/" data-panel="writings">writings</a></li>
-      </ul>
-    </nav>
-
-    <section class="home-panel is-active" id="panel-home" aria-label="home">
+    <section class="home-section" aria-labelledby="about-heading">
+      <h2 class="hl home-h2" id="about-heading"><span>About</span></h2>
       <div class="home-intro">
-        <p>I’m an urban innovator based in the Greater Toronto Area. I love putting myself in front of ambiguous questions and complex challenges to help cities navigate an ever-changing world.</p>
-        <p>My work sits at the intersection of public policy, municipal governance, and urban operations. I connect data, research, and critical thinking to help cities make better decisions and deliver better outcomes.</p>
-        <p>By day, I’m a research and data analyst at <a href="https://municipalvu.ca/" target="_blank" rel="noopener noreferrer" class="location-link">MunicipalVU</a>. On weekends, you’ll find me outside and on the move.</p>
+        <p>I’m an urban innovator based in the Greater Toronto Area, interested in how cities work, evolve, and respond to complex challenges.</p>
+        <p>My work sits at the intersection of public policy, municipal governance, and urban operations. I bring together data, research, and analytical thinking to turn complex questions into practical insights, helping public-sector organizations make informed decisions and improve how cities are planned and managed.</p>
+        <p>By day, I’m a Research and Data Analyst at <a href="https://municipalvu.ca/" target="_blank" rel="noopener noreferrer" class="location-link">MunicipalVU<span class="sr-note"> (opens in a new tab)</span></a>, where I work on research and data-driven projects supporting municipal decision-making.</p>
+        <p>Outside of work, you’ll find me exploring cities, taking photographs, or finding new places to discover.</p>
       </div>
+    </section>
 
+    <section class="home-section" id="work" aria-labelledby="work-heading">
+      <h2 class="hl home-h2" id="work-heading"><span>Selected work</span></h2>
+      <!-- Rendered from the projects list in assets/js/content.js -->
+      <ol class="pgrid pgrid--home" id="home-work">
+        <li class="feed-empty">No projects published yet. The first one is on its way.</li>
+      </ol>
+      <a class="home-more" href="projects/">All projects <svg class="pcard-arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </section>
+
+    <section class="home-section" aria-labelledby="background-heading">
+      <h2 class="hl home-h2" id="background-heading"><span>Background</span></h2>
       <dl class="home-facts">
         <div class="fact">
           <dt>Education</dt>
           <dd>
-            <p>Master of Urban Innovation, <a href="https://www.utoronto.ca/" target="_blank" rel="noopener noreferrer" class="location-link">University of Toronto</a></p>
-            <p>BA (Honours) Human Geography, <a href="https://www.mcmaster.ca/" target="_blank" rel="noopener noreferrer" class="location-link">McMaster University</a></p>
+            <p>Master of Urban Innovation, <a href="https://www.utoronto.ca/" target="_blank" rel="noopener noreferrer" class="location-link">University of Toronto<span class="sr-note"> (opens in a new tab)</span></a></p>
+            <p>BA (Honours) Human Geography, <a href="https://www.mcmaster.ca/" target="_blank" rel="noopener noreferrer" class="location-link">McMaster University<span class="sr-note"> (opens in a new tab)</span></a></p>
           </dd>
         </div>
         <div class="fact">
@@ -179,27 +194,16 @@
         </div>
       </dl>
     </section>
-
-    <section class="home-panel" id="panel-projects" aria-label="projects" hidden>
-      <!-- Rendered from the projects array in assets/js/scripts.js -->
-      <ul class="chips" id="home-project-filters" aria-label="Filter projects by category" hidden></ul>
-      <p class="sr-note" role="status" id="home-projects-status"></p>
-      <ol class="entry-feed" id="project-list">
-        <li class="feed-empty">No projects published yet. The first one is on its way.</li>
-      </ol>
-    </section>
-
-    <section class="home-panel" id="panel-writings" aria-label="writings" hidden>
-      <!-- Rendered from the blogPosts array in assets/js/scripts.js -->
-      <ol class="entry-feed" id="blog-list">
-        <li class="feed-empty" id="blog-empty-placeholder">No writing published yet. The first essay is on its way.</li>
-      </ol>
-    </section>
   </main>
 
-  <script src="assets/js/scripts.js?v=1.9.0"></script>
-  <script type="module" src="assets/hero/hero.js?v=1.6.0"></script>
-  <script src="assets/preloader/preloader.js?v=1.0.0"></script>
+  <footer class="site-footer">
+    <p>© 2026 Thuan Truong</p>
+  </footer>
+
+  <script src="assets/js/content.js?v=1.1.0"></script>
+  <script src="assets/js/site.js?v=1.1.0"></script>
+  <script type="module" src="assets/hero/hero.js?v=1.8.0"></script>
+  <script src="assets/preloader/preloader.js?v=1.1.0"></script>
 
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

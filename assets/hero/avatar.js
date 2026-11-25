@@ -5,7 +5,7 @@
 // - a stretchable face (WebGL2, see engine.js): grab and pull it like taffy, it
 //   snaps back with a wobble and flushes the longer it's mistreated.
 // Without WebGL2 the inline SVG stays visible and the eyes still track.
-// Light DOM, so the site's CSS applies. Emits `moodchange` ({mood, patience}).
+// Light DOM, so the site's CSS applies.
 import {FaceEngine} from './engine.js';
 
 // The portrait lives in a square 260-unit frame; UV = (x - 70, y - 98) / 260.
@@ -63,21 +63,6 @@ const CURVE = '<path pathLength="1" d="M58 5 C 46 3, 22 10, 12 46" /><path pathL
 const SIDE = '<path pathLength="1" d="M60 30 C 46 18, 24 18, 8 30" /><path pathLength="1" d="M17 21 L7 30 L18 37" />';
 const ARROWS = {tl: CURVE, tr: CURVE, l: SIDE, r: SIDE};
 
-const MOODS = {
-  base: 'chill',
-  look: 'watching you',
-  cross: 'suspicious',
-  shock: 'startled',
-  tongue: 'goofy',
-  laugh: 'cackling',
-  skeptic: 'unconvinced',
-  whistle: 'innocent',
-  smug: 'smug',
-  dizzy: 'seeing stars',
-  grimace: 'being squeezed',
-  ouch: 'OW',
-  squish: 'pinched',
-};
 const RELEASE = ['tongue', 'laugh', 'skeptic', 'whistle', 'smug', 'cross'];
 
 // Pupil travel, in SVG units. The lenses have r=24, so 6 keeps the dot well inside.
@@ -158,7 +143,6 @@ class SiteAvatar extends HTMLElement {
     this.pulls = 0;
     this.lastRelease = null;
     this.softFlush = 0; // patience drain when there is no WebGL engine
-    this.reported = '';
 
     this.downs = new Map();
 
@@ -470,7 +454,6 @@ class SiteAvatar extends HTMLElement {
   // ------------------------------------------------------------------ mood
   show(key) {
     this.mood = key;
-    this.report();
   }
 
   /** Idle mood: watching the cursor when it's off to one side, suspicious when it's on the nose. */
@@ -486,16 +469,6 @@ class SiteAvatar extends HTMLElement {
   tickMood() {
     if (this.mode === 'after' && !this.engine?.held && performance.now() - this.afterAt > HOLD_MS) this.mode = 'neutral';
     if (this.mode === 'neutral') this.mood = this.neutralMood();
-    this.report();
-  }
-
-  report() {
-    const flush = this.engine ? this.engine.flush : this.softFlush;
-    const detail = {mood: MOODS[this.mood], patience: Math.round((1 - flush) * 100)};
-    const key = `${detail.mood}|${detail.patience}`;
-    if (key === this.reported) return;
-    this.reported = key;
-    this.dispatchEvent(new CustomEvent('moodchange', {bubbles: true, detail}));
   }
 }
 

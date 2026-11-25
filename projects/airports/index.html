@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=1.19.0">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=1.22.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 
   <!-- SEO -->
@@ -16,94 +16,116 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://www.thuantruong.com/projects/airports/" />
 
+  <!-- Open Graph (LinkedIn, Facebook, Slack previews) -->
+  <meta property="og:title" content="World Airports" />
+  <meta property="og:description" content="Every airport in the OpenFlights database on one interactive map." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.thuantruong.com/projects/airports/" />
+  <meta property="og:site_name" content="Thuan Truong" />
+  <meta property="og:locale" content="en_CA" />
+  <meta property="og:image" content="https://www.thuantruong.com/assets/images/projects/world-airports.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:alt" content="World map with airports shown as clustered dots." />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- Browser Theme Colours -->
-  <meta name="theme-color" content="#fafafa">
-
-  <style>
-    .map-container {
-      width: 100%;
-      height: 520px;
-      margin-top: 2rem;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .map-status {
-      font-size: 1.6rem;
-      color: var(--secondary-color);
-      padding: 1rem 0;
-    }
-
-    .maplibregl-popup-content {
-      font-family: InterVariable, Inter, sans-serif;
-      font-size: 1.3rem;
-      line-height: 1.4;
-    }
-  </style>
+  <meta name="theme-color" content="#f4f4f5">
 </head>
 <body>
 
   <header class="site-header">
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="Main">
       <ul>
-        <li><a href="../../index.html" class="nav-home" aria-label="thuận"><span aria-hidden="true">t</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></a></li>
-        <li><a href="../" aria-current="page">projects</a></li>
+        <li><a href="../../" class="nav-home" aria-label="thuận, home"><span aria-hidden="true">t</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></a></li>
+        <li><a href="../../projects/" aria-current="true">projects</a></li>
         <li><a href="../../writings/">writings</a></li>
       </ul>
     </nav>
 
     <div class="site-social">
       <ul>
-        <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" aria-label="LinkedIn"><img src="../../assets/icons/linkedin-icon.png" alt=""></a></li>
-        <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="../../assets/icons/email-icon.png" alt=""></a></li>
+        <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)"><img src="../../assets/images/icons/linkedin.svg" alt="" width="20" height="20"></a></li>
+        <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="../../assets/images/icons/email.svg" alt="" width="20" height="20"></a></li>
       </ul>
     </div>
   </header>
 
-  <main>
+  <main class="page case">
 
-    <section class="about-section" aria-label="world airports map">
-      <div class="about">
-        <h2>airports</h2>
-        <div class="about-list">
-          <div class="about-item">
-            <h3>World Airports</h3>
-            <p class="languages-tag">maplibre, supercluster <span class="project-date">2026</span></p>
-            <p>Every airport in the <a href="https://openflights.org/data" target="_blank" rel="noopener noreferrer" class="location-link">OpenFlights</a> database is plotted on one map. Zoom in, and clusters split apart. Click a cluster to zoom into it, or an airport to see its name and code.</p>
-            <p class="map-status" id="map-status">Loading airports…</p>
-            <div class="map-container" id="map"></div>
-          </div>
-        </div>
-      </div>
+    <a class="case-back" href="../"><svg class="pcard-arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M13 8H4M7.5 4.5 4 8l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>All projects</a>
+
+    <header class="page-header case-header">
+      <h1 class="hl"><span>World Airports</span></h1>
+      <p>Where are the world’s airports? Every airport in the OpenFlights database, plotted on one map you can pan and zoom.</p>
+      <p class="case-byline">Interactive web map · MapLibre, Supercluster · <time datetime="2026-10">Oct 2026</time></p>
+    </header>
+
+    <figure class="case-figure case-map">
+      <div class="map-container" id="map" role="region" aria-label="Interactive map of world airports"></div>
+      <figcaption id="map-status" role="status">Loading airports…</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <h2 class="hl"><span>How to use it</span></h2>
+      <ul class="case-list">
+        <li>Zoom in and the clusters split apart into smaller groups.</li>
+        <li>Click a cluster to zoom straight into it.</li>
+        <li>Click a single airport (yellow) to see its name, city and code.</li>
+      </ul>
+    </section>
+
+    <section class="case-section">
+      <h2 class="hl"><span>How I built it</span></h2>
+      <p>Thousands of points on one world map turn into a smudge. Supercluster groups nearby airports into clusters for each zoom level, so the map stays readable from the whole globe down to a single region. Darker, larger circles hold more airports.</p>
+      <p>Airport locations come from <a href="https://openflights.org/data" target="_blank" rel="noopener noreferrer" class="location-link">OpenFlights<span class="sr-note"> (opens in a new tab)</span></a> (Open Database License), and country outlines from Natural Earth. The map is drawn with MapLibre.</p>
+    </section>
+
+    <section class="case-next" aria-labelledby="next-heading">
+      <h2 class="hl case-next-label" id="next-heading"><span>Next project</span></h2>
+      <a class="case-next-card" href="../winter-maintenance/" aria-labelledby="next-title">
+        <img src="../../assets/images/projects/winter-maintenance.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async">
+        <span class="case-next-body">
+          <span class="case-next-title" id="next-title">GTHA Winter Maintenance Dashboard</span>
+          <span class="case-next-desc">What 26 municipalities in the Greater Toronto and Hamilton Area spend on winter maintenance, 2015 to 2025.</span>
+          <span class="case-next-cta" aria-hidden="true">View project <svg class="pcard-arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </span>
+      </a>
+      <p class="case-contact">Questions about this project, or want to connect? <a href="mailto:truongthuan216@gmail.com" class="location-link">Email me</a>.</p>
     </section>
 
   </main>
 
+  <footer class="site-footer">
+    <p>© 2026 Thuan Truong</p>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
   <script type="module">
     import Supercluster from 'https://cdn.jsdelivr.net/npm/supercluster@8.0.1/+esm';
-    import { csvParseRows } from 'https://cdn.jsdelivr.net/npm/d3-dsv@3.0.1/+esm';
 
-    const AIRPORTS_URL = 'https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat';
-    const COUNTRIES_URL = 'countries.geo.json';
+    // OpenFlights airports, trimmed to [name, city, country, iata, lat, lng] (ODbL).
+    const AIRPORTS_URL = 'data/airports.json';
+    const COUNTRIES_URL = 'data/countries.geo.json';
     const GLYPHS_URL = 'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf';
 
     const status = document.getElementById('map-status');
     const isCluster = ['has', 'point_count'];
 
-    // Columns: id, name, city, country, iata, icao, lat, lng, … ("\N" marks a missing value)
     const features = await fetch(AIRPORTS_URL)
-      .then((r) => r.text())
-      .then((csv) => csvParseRows(csv, ([, name, city, country, iata, , lat, lng]) => ({
+      .then((r) => {
+        if (!r.ok) throw new Error(`${AIRPORTS_URL}: HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((rows) => rows.map(([name, city, country, iata, lat, lng]) => ({
         type: 'Feature',
-        properties: { name, city, country, iata: iata === '\\N' ? '' : iata },
-        geometry: { type: 'Point', coordinates: [+lng, +lat] }
+        properties: { name, city, country, iata },
+        geometry: { type: 'Point', coordinates: [lng, lat] }
       })))
       .catch((err) => {
         status.textContent = 'Could not load the airport data. Please try again later.';
@@ -122,10 +144,11 @@
         return null;
       });
 
-    const index = new Supercluster({ radius: 10.4, maxZoom: 8 }).load(features);
+    const index = new Supercluster({ radius: 30, maxZoom: 8 }).load(features);
 
     const map = new maplibregl.Map({
       container: 'map',
+      attributionControl: { compact: true },
       center: [0, 20],
       zoom: 1.5,
       style: {
@@ -143,9 +166,9 @@
           }
         },
         layers: [
-          { id: 'background', type: 'background', paint: { 'background-color': '#fafafa' } },
-          { id: 'countries-fill', type: 'fill', source: 'countries', paint: { 'fill-color': '#d4d4d8' } },
-          { id: 'countries-line', type: 'line', source: 'countries', paint: { 'line-color': '#fafafa', 'line-width': 0.6 } },
+          { id: 'background', type: 'background', paint: { 'background-color': '#ffffff' } },
+          { id: 'countries-fill', type: 'fill', source: 'countries', paint: { 'fill-color': '#e4e4e7' } },
+          { id: 'countries-line', type: 'line', source: 'countries', paint: { 'line-color': '#ffffff', 'line-width': 0.6 } },
           {
             id: 'clusters',
             type: 'circle',
@@ -154,8 +177,8 @@
             // Large clusters sort to the bottom so smaller dots stay visible
             layout: { 'circle-sort-key': ['-', ['get', 'point_count']] },
             paint: {
-              'circle-color': ['step', ['get', 'point_count'], '#51bbd6', 10, '#f1f075', 100, '#f28cb1'],
-              'circle-radius': ['step', ['get', 'point_count'], 5, 10, 8, 100, 13],
+              'circle-color': ['step', ['get', 'point_count'], '#67676f', 10, '#3f3f46', 100, '#09090b'],
+              'circle-radius': ['step', ['get', 'point_count'], 8, 10, 11, 100, 15],
               'circle-stroke-width': 1,
               'circle-stroke-color': '#fff'
             }
@@ -168,9 +191,9 @@
             layout: {
               'text-field': '{point_count_abbreviated}',
               'text-font': ['Noto Sans Bold'],
-              'text-size': 9
+              'text-size': 10
             },
-            paint: { 'text-color': '#333' }
+            paint: { 'text-color': '#ffffff' }
           },
           {
             id: 'unclustered',
@@ -178,10 +201,10 @@
             source: 'airports',
             filter: ['!', isCluster],
             paint: {
-              'circle-color': '#11b4da',
-              'circle-radius': 3,
-              'circle-stroke-width': 0.5,
-              'circle-stroke-color': '#fff'
+              'circle-color': '#f2b31b',
+              'circle-radius': 4,
+              'circle-stroke-width': 1,
+              'circle-stroke-color': '#09090b'
             }
           }
         ]

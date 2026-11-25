@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-  <link rel="stylesheet" href="../assets/css/styles.css?v=1.19.0">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=1.22.0">
 
   <!-- SEO -->
   <title>Projects - Thuan Truong</title>
@@ -16,6 +16,18 @@
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://www.thuantruong.com/projects/" />
+
+  <!-- Open Graph (LinkedIn, Facebook, Slack previews) -->
+  <meta property="og:title" content="Projects | Thuan Truong" />
+  <meta property="og:description" content="Projects by Thuan Truong, an urban innovator focused on cities, policy, and data in the Greater Toronto Area." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.thuantruong.com/projects/" />
+  <meta property="og:site_name" content="Thuan Truong" />
+  <meta property="og:locale" content="en_CA" />
+  <meta property="og:image" content="https://www.thuantruong.com/assets/images/projects/winter-maintenance.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -29,18 +41,18 @@
 <body>
 
   <header class="site-header">
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="Main">
       <ul>
-        <li><a href="../index.html" class="nav-home" aria-label="thuận"><span aria-hidden="true">t</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></a></li>
-        <li><a href="index.html" aria-current="page">projects</a></li>
+        <li><a href="../" class="nav-home" aria-label="thuận, home"><span aria-hidden="true">t</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></a></li>
+        <li><a href="../projects/" aria-current="page">projects</a></li>
         <li><a href="../writings/">writings</a></li>
       </ul>
     </nav>
 
     <div class="site-social">
       <ul>
-        <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" aria-label="LinkedIn"><img src="../assets/icons/linkedin-icon.png" alt=""></a></li>
-        <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="../assets/icons/email-icon.png" alt=""></a></li>
+        <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)"><img src="../assets/images/icons/linkedin.svg" alt="" width="20" height="20"></a></li>
+        <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="../assets/images/icons/email.svg" alt="" width="20" height="20"></a></li>
       </ul>
     </div>
   </header>
@@ -48,11 +60,16 @@
   <main class="page page--wide">
 
     <header class="page-header">
-      <h1>projects</h1>
+      <h1 class="hl"><span>projects</span></h1>
     </header>
 
-    <!-- Cards and filters are rendered by assets/js/projects.js from the projects list in assets/js/scripts.js -->
+    <!-- Cards and filters are rendered by assets/js/projects-page.js from the projects list in assets/js/content.js -->
     <div class="projects-layout">
+      <aside class="pfilter" aria-labelledby="pfilter-heading" hidden>
+        <h2 class="pfilter-title" id="pfilter-heading">Categories</h2>
+        <ul class="pfilter-list" id="project-filters"></ul>
+      </aside>
+
       <section class="projects-main" aria-labelledby="projects-heading">
         <h2 class="section-label" id="projects-heading">Projects</h2>
         <p class="sr-note" role="status" id="projects-status"></p>
@@ -60,18 +77,18 @@
           <li class="feed-empty">No projects published yet. The first one is on its way.</li>
         </ol>
       </section>
-
-      <aside class="pfilter" aria-labelledby="pfilter-heading" hidden>
-        <h2 class="pfilter-title" id="pfilter-heading">Categories</h2>
-        <ul class="pfilter-list" id="project-filters"></ul>
-      </aside>
     </div>
 
   </main>
 
+  <footer class="site-footer">
+    <p>© 2026 Thuan Truong</p>
+  </footer>
 
-  <script src="../assets/js/scripts.js?v=1.9.0"></script>
-  <script src="../assets/js/projects.js?v=1.0.2"></script>
+
+  <script src="../assets/js/content.js?v=1.1.0"></script>
+  <script src="../assets/js/site.js?v=1.1.0"></script>
+  <script src="../assets/js/projects-page.js?v=1.1.0"></script>
 
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

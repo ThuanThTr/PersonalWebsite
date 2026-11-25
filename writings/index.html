@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-  <link rel="stylesheet" href="../assets/css/styles.css?v=1.19.0">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=1.22.0">
 
   <!-- SEO -->
   <title>Writings - Thuan Truong</title>
@@ -17,30 +17,42 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://www.thuantruong.com/writings/" />
 
+  <!-- Open Graph (LinkedIn, Facebook, Slack previews) -->
+  <meta property="og:title" content="Writings | Thuan Truong" />
+  <meta property="og:description" content="Essays and spatial notes on cities, data, and policy." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.thuantruong.com/writings/" />
+  <meta property="og:site_name" content="Thuan Truong" />
+  <meta property="og:locale" content="en_CA" />
+  <meta property="og:image" content="https://www.thuantruong.com/icon.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta name="twitter:card" content="summary" />
+
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- Browser Theme Colours -->
-  <meta name="theme-color" content="#fafafa">
+  <meta name="theme-color" content="#f4f4f5">
 
 </head>
 <body>
 
   <header class="site-header">
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="Main">
       <ul>
-        <li><a href="../index.html" class="nav-home" aria-label="thuận"><span aria-hidden="true">t</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></a></li>
+        <li><a href="../" class="nav-home" aria-label="thuận, home"><span aria-hidden="true">t</span><span aria-hidden="true">h</span><span aria-hidden="true">u</span><span aria-hidden="true">ậ</span><span aria-hidden="true">n</span><span aria-hidden="true">.</span></a></li>
         <li><a href="../projects/">projects</a></li>
-        <li><a href="index.html" aria-current="page">writings</a></li>
+        <li><a href="../writings/" aria-current="page">writings</a></li>
       </ul>
     </nav>
 
     <div class="site-social">
       <ul>
-        <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" aria-label="LinkedIn"><img src="../assets/icons/linkedin-icon.png" alt=""></a></li>
-        <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="../assets/icons/email-icon.png" alt=""></a></li>
+        <li><a href="https://www.linkedin.com/in/tt-truong/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)"><img src="../assets/images/icons/linkedin.svg" alt="" width="20" height="20"></a></li>
+        <li><a href="mailto:truongthuan216@gmail.com" aria-label="Email"><img src="../assets/images/icons/email.svg" alt="" width="20" height="20"></a></li>
       </ul>
     </div>
   </header>
@@ -48,11 +60,11 @@
   <main class="page">
 
     <header class="page-header">
-      <h1>writings</h1>
+      <h1 class="hl"><span>writings</span></h1>
       <p>Essays and spatial notes on cities, data, and policy.</p>
     </header>
 
-    <!-- POSTS: rendered from blogPosts in assets/js/scripts.js -->
+    <!-- POSTS: rendered from blogPosts in assets/js/content.js -->
 
     <section class="page-section" aria-labelledby="posts-heading">
       <h2 class="section-label" id="posts-heading">All writing</h2>
@@ -63,8 +75,13 @@
 
   </main>
 
+  <footer class="site-footer">
+    <p>© 2026 Thuan Truong</p>
+  </footer>
 
-  <script src="../assets/js/scripts.js?v=1.9.0"></script>
+
+  <script src="../assets/js/content.js?v=1.1.0"></script>
+  <script src="../assets/js/site.js?v=1.1.0"></script>
 
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

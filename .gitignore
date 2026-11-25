@@ -1,5 +1,14 @@
-node_modules/
+# OS and editor files
 .DS_Store
 **/.DS_Store
+node_modules/
 .Rhistory
 .Rproj.user/
+
+# Local tooling (Claude Code, Impeccable design reports)
+.claude/
+.impeccable/
+
+# Secrets
+.env
+.env.*

@@ -3,7 +3,7 @@
 /* =====================================================================
  * CHARACTER — flat line-art figure, side-on and facing right.
  * Units: feet at (0, 0), head top near y = -254. Likeness from
- * assets/art/avatar.svg: side-swept dark hair, round glasses, dot eyes,
+ * assets/images/avatar.svg: side-swept dark hair, round glasses, dot eyes,
  * small smile, blush.
  *
  * Two layers per body part:
@@ -99,7 +99,7 @@ const CHARACTER = {
   },
 };
 
-(() => {
+const runIntro = () => {
   const html = document.documentElement;
   if (!window.gsap || !html.classList.contains('is-loading')) return;
 
@@ -113,6 +113,7 @@ const CHARACTER = {
     windup: 0.28,      // anticipation before each shove
     shove: 0.75,       // how long each shove drags the name
     hold: 0.6,         // hold on the finished name
+    speed: 1.6,        // playback rate (1 = original pacing, ~8s)
     contactX: 76,      // feet-to-hands distance while pushing (character units)
   };
   const css = getComputedStyle(document.documentElement);
@@ -210,6 +211,7 @@ const CHARACTER = {
     L = measure();
     buildScaffold();
     tl = gsap.timeline({ paused: true, onUpdate: updateBar, onComplete: finish });
+    tl.timeScale(CFG.speed);
     tl.set([stage, bar, skipBtn, count], { autoAlpha: 1, y: 0 }, 0);
     tl.set(grid, { autoAlpha: 1 }, 0);
     tl.set(letters, { opacity: 1 }, 0);
@@ -507,4 +509,8 @@ const CHARACTER = {
 
   const fontReady = document.fonts ? document.fonts.load('900 100px InterVariable', 'THUẬN') : Promise.resolve();
   Promise.race([fontReady, new Promise((r) => setTimeout(r, 1500))]).then(start, start);
-})();
+};
+
+// GSAP is loaded from index.html's <head> only when the intro will play.
+if (window.gsap) runIntro();
+else document.getElementById('gsap-js')?.addEventListener('load', runIntro);

@@ -1,29 +1,6 @@
 // Projects page: card grid + category filter.
-// Shared data and helpers (projects, PROJECT_CATEGORIES, SAMPLE_PROJECTS, slugify, ARROW,
-// resolveHref, formatDate, isExternal, NEW_TAB) live in scripts.js.
-// Add `?samples` to the URL to mix in placeholder projects for testing the layout.
-
-const renderCard = (p) => {
-  const ext = isExternal(p.href);
-  const thumb = p.thumb
-    ? `<img src="${resolveHref(p.thumb)}" alt="${p.thumbAlt || ''}" width="1200" height="675" loading="lazy" decoding="async">`
-    : `<span class="pcard-placeholder">${p.sample ? 'Sample thumbnail' : 'Preview coming soon'}</span>`;
-  const meta = [`<time datetime="${p.date}">${formatDate(p.date)}</time>`, p.credit].filter(Boolean)
-    .join('<span class="entry-sep" aria-hidden="true">·</span>');
-
-  return `
-  <li class="pcard">
-    <article>
-      <h3 class="pcard-title">
-        <a class="pcard-link" href="${resolveHref(p.href)}"${ext ? ' target="_blank" rel="noopener noreferrer"' : ''}>${p.title}${ext ? NEW_TAB : ''}</a>
-      </h3>
-      <div class="pcard-thumb">${thumb}</div>
-      <p class="pcard-meta">${meta}</p>
-      <p class="pcard-desc">${p.teaser || p.summary || ''}</p>
-      <span class="pcard-cta" aria-hidden="true">View project ${ARROW}</span>
-    </article>
-  </li>`;
-};
+// Shared data and helpers (renderCard, projects, PROJECT_CATEGORIES, slugify, ARROW,
+// resolveHref, formatDate, isExternal, NEW_TAB) live in site.js; content (projects, categories) in content.js.
 
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.getElementById('project-grid');
@@ -33,12 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!grid || !filterList) return;
 
   const params = new URLSearchParams(location.search);
-  const items = sortNewestFirst([...projects, ...(params.has('samples') ? SAMPLE_PROJECTS : [])]);
+  const items = sortNewestFirst(projects);
   if (!items.length) return; // keep the empty message
 
   // Only categories that have at least one project.
   const counts = Object.fromEntries(PROJECT_CATEGORIES.map((c) => [c, items.filter((p) => p.categories?.includes(c)).length]));
   const cats = PROJECT_CATEGORIES.filter((c) => counts[c] > 0);
+
+  // Filters only help once there are enough projects to sort.
+  if (items.length < 4) {
+    grid.innerHTML = items.map(renderCard).join('');
+    return;
+  }
 
   const button = (slug, label, count) =>
     `<li><button type="button" class="pfilter-btn" data-cat="${slug}" aria-pressed="false">
